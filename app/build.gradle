@@ -33,9 +33,11 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.google.android.material:material:1.0.0'
-    implementation 'com.google.ar:core:1.14.0'
-    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.14.0'
+    implementation 'com.google.ar:core:1.4.0'
+    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.4.0'
+    //implementaion 'com.google.android.gms:play-services-auth:17.0.0'
 }
+
 
 
 sceneform.asset('sampledata/Smoothie3DBowlModel/model_199399840789.obj',

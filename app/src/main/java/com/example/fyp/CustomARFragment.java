@@ -17,7 +17,6 @@ public class CustomARFragment extends ArFragment {
         session.configure(config);
         this.getArSceneView().setupSession(session);
 
-
         if(((DisplayARCamera)getActivity()).setupAugmentedImgDb(config, session)){
             Log.d("setupAugmentedImgDb", "Successfully setup database");
         }

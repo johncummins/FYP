@@ -94,6 +94,8 @@ public class DisplayARCamera extends AppCompatActivity {
         for (AugmentedImage augmentedImage : augmentedImages){ //for each image aug image in augDB
             if (augmentedImage.getTrackingState() == TrackingState.TRACKING){ //if aug img is being tracked
                 if (augmentedImage.getName().equals("bowl") && addModel == true){ //if img being tracked has name bowl and bool "addmodel" is true
+                    Log.i("Here", "This is inside image db, and sets addmodel to true");
+
                     createModel(arFragment, augmentedImage.createAnchor //then place 3D model ontop of image
                             (augmentedImage.getCenterPose()), //creates anchor in centre of detected image
                             Uri.parse("model_199399840789.sfb")); // model of bowl.sfb)
