@@ -40,6 +40,7 @@ dependencies {
 
 
 
+
 sceneform.asset('sampledata/Smoothie3DBowlModel/model_199399840789.obj',
         'default',
         'sampledata/Smoothie3DBowlModel/model_199399840789.sfa',

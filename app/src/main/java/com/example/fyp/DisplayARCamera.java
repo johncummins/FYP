@@ -5,8 +5,6 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.ar.core.Anchor;
 import com.google.ar.core.AugmentedImage;
 import com.google.ar.core.AugmentedImageDatabase;
@@ -16,6 +14,8 @@ import com.google.ar.core.Session;
 import com.google.ar.core.TrackingState;
 import com.google.ar.sceneform.AnchorNode;
 import com.google.ar.sceneform.FrameTime;
+import com.google.ar.sceneform.math.Quaternion;
+import com.google.ar.sceneform.math.Vector3;
 import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.rendering.Renderable;
 import com.google.ar.sceneform.ux.ArFragment;
@@ -23,10 +23,8 @@ import com.google.ar.sceneform.ux.TransformableNode;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.util.Log;
-import android.view.View;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -124,6 +122,7 @@ public class DisplayARCamera extends AppCompatActivity {
     private void addNodeToScene(ArFragment fragment, Anchor anchor, Renderable renderable){
         AnchorNode anchorNode = new AnchorNode(anchor); //creates a basic node, in fixed position, cant be moved or interacted with
         TransformableNode node = new TransformableNode(fragment.getTransformationSystem()); //can scale, rotate and move this node
+        node.setLocalRotation(Quaternion.axisAngle(new Vector3(1f, 0, 0), 270f)); //rotates the node 270 degrees in y axis (x,y,z), as bowl useed to be upside down
         node.setRenderable(renderable);
         node.setParent(anchorNode); //setting parent of transformable node as anchor
         fragment.getArSceneView().getScene().addChild(anchorNode); // added anchor to scene(adds both transformable and anchor to scene)

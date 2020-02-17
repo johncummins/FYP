@@ -43,5 +43,18 @@
       name: "model_199399840789",
       recenter: "root",
    },
-   version: "0.52:1",
+
+     samplers: [
+      {
+        file: 'sampledata/Smoothie3DBowlModel/bowlimage.jpeg',
+        name: 'bowlimage',
+        pipeline_name: 'bowlimage.jpeg',
+        injections: [
+         {usage: "Normal",},
+       ],
+      },
+    ],
+
+    version: "0.54:1",
+   //version: "0.52:1",
 }
