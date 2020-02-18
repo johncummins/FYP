@@ -1,7 +1,9 @@
 package com.example.fyp;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -18,6 +20,7 @@ import com.google.ar.sceneform.math.Quaternion;
 import com.google.ar.sceneform.math.Vector3;
 import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.rendering.Renderable;
+import com.google.ar.sceneform.rendering.ViewRenderable;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
 
@@ -33,7 +36,8 @@ import java.util.Collection;
 public class DisplayARCamera extends AppCompatActivity {
 
     private CustomARFragment arFragment;
-    boolean addModel = true;
+    boolean addBowlModel = true;
+    boolean addProcAdudio = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,18 +51,31 @@ public class DisplayARCamera extends AppCompatActivity {
     }
 
 
+    //Context context;
     //This function sets up an augmented image database
     //This function is called in custom ARfragment class
     public boolean setupAugmentedImgDb(Config config, Session session){
+        //this.context =ctx;
         AugmentedImageDatabase augmentedImgDB;
-        Bitmap bitmap = loadAugmentedImg();
+        //loadAugmentedImg newImage = new loadAugmentedImg();
+        //Bitmap bitmap1 = newImage.loadBowlImage();
+        //Bitmap bitmap2 = newImage.loadBowlImage();
 
-        if (bitmap == null){
+
+        Bitmap bitmap1 = loadBowlImage();
+        Bitmap bitmap2 = loadPoclamImage();
+
+        if (bitmap1 == null){
+            return false;
+        }
+        if (bitmap2 == null){
             return false;
         }
 
         augmentedImgDB = new AugmentedImageDatabase(session);
-        augmentedImgDB.addImage("bowl", bitmap); //adding bowl image(specified in loadAugmentedImg function)to the db
+        augmentedImgDB.addImage("bowl", bitmap1); //adding bowl image(specified in loadAugmentedImg function)to the db
+        augmentedImgDB.addImage("proclamation", bitmap2); //adding bowl image(specified in loadAugmentedImg function)to the db
+
 
         config.setAugmentedImageDatabase(augmentedImgDB); //setting up db
         return true;
@@ -67,9 +84,10 @@ public class DisplayARCamera extends AppCompatActivity {
     }
 
 
+
     //This function loads a specified image into the above db
     //In this instance here, I am loading the bowl image
-    private Bitmap loadAugmentedImg(){
+    private Bitmap loadBowlImage(){
         try(InputStream inStream = getAssets().open("bowlimage.jpeg")){
             return BitmapFactory.decodeStream(inStream);
         }
@@ -77,8 +95,36 @@ public class DisplayARCamera extends AppCompatActivity {
         catch(IOException e){
             Log.e("ImageLoad", "IO Exception - image did not load properly", e);
         }
+
         return null;
     }
+
+
+    private Bitmap loadPoclamImage(){
+        try(InputStream inStreamP = getAssets().open("proclamation.jpeg")){
+            return BitmapFactory.decodeStream(inStreamP);
+        }
+
+        catch(IOException e){
+            Log.e("ImageLoad", "IO Exception - image did not load properly", e);
+        }
+
+        return null;
+    }
+
+
+    /*
+            try(InputStream inStreamP = getAssets().open("proclamation1.jpeg")){
+        return BitmapFactory.decodeStream(inStreamP);
+    }
+
+        catch(IOException e){
+        Log.e("ImageLoad", "IO Exception - image did not load properly", e);
+    }
+
+
+     */
+
 
 
 
@@ -91,13 +137,31 @@ public class DisplayARCamera extends AppCompatActivity {
         //goes through entire image DB and check if any images have bee detected
         for (AugmentedImage augmentedImage : augmentedImages){ //for each image aug image in augDB
             if (augmentedImage.getTrackingState() == TrackingState.TRACKING){ //if aug img is being tracked
-                if (augmentedImage.getName().equals("bowl") && addModel == true){ //if img being tracked has name bowl and bool "addmodel" is true
-                    Log.i("Here", "This is inside image db, and sets addmodel to true");
-
+                if (augmentedImage.getName().equals("bowl") && addBowlModel == true){ //if img being tracked has name bowl and bool "addBowlmodel" is true
+                    Log.i("Here", "bowl has been detected, and sets addmodel to true");
                     createModel(arFragment, augmentedImage.createAnchor //then place 3D model ontop of image
                             (augmentedImage.getCenterPose()), //creates anchor in centre of detected image
                             Uri.parse("model_199399840789.sfb")); // model of bowl.sfb)
-                    addModel = false; //this ensures model is only added once
+                    addBowlModel = false; //this ensures model is only added once
+                }
+
+                //augmentedImage.getName().equals("proclamation1") // can be added in below if i want two proclamtion pictures
+
+                if (augmentedImage.getName().equals("proclamation") && addProcAdudio == true) { //if img being tracked has name proclamation and bool "addprocaudio" is true
+                    MediaPlayer mediaplayer = MediaPlayer.create(this, R.raw.proclamation_audio);
+                    mediaplayer.start();
+                    /*
+                    ViewRenderable.builder()
+                            .setView(this, R.layout.pause_audio)
+                            .build()
+                            .thenAccept(renderable -> testViewRenderable = renderable);
+
+
+                     */
+                    Log.i("Here", "Proclamtion has been detected, and sets addmodel to true");
+
+                    addProcAdudio = false;
+
                 }
             }
         }
