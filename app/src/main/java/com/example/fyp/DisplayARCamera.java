@@ -1,6 +1,5 @@
 package com.example.fyp;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
@@ -29,6 +28,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
 
+import java.io.IOError;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
@@ -38,11 +38,20 @@ public class DisplayARCamera extends AppCompatActivity {
     private CustomARFragment arFragment;
     boolean addBowlModel = true;
     boolean addProcAdudio = true;
+    public ViewRenderable play_audio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_arcamera);
+
+        try{
+            ViewRenderable.builder()
+                .setView(this, R.layout.play_audio)
+                .build().thenAccept(renderable -> play_audio = renderable);
+        }catch (IOError error){
+            error.printStackTrace();
+        }
 
         arFragment = (CustomARFragment) getSupportFragmentManager().findFragmentById(R.id.sceneform_fragment);
         assert arFragment != null;
@@ -148,24 +157,24 @@ public class DisplayARCamera extends AppCompatActivity {
                 //augmentedImage.getName().equals("proclamation1") // can be added in below if i want two proclamtion pictures
 
                 if (augmentedImage.getName().equals("proclamation") && addProcAdudio == true) { //if img being tracked has name proclamation and bool "addprocaudio" is true
-                    MediaPlayer mediaplayer = MediaPlayer.create(this, R.raw.proclamation_audio);
-                    mediaplayer.start();
-                    /*
-                    ViewRenderable.builder()
-                            .setView(this, R.layout.pause_audio)
-                            .build()
-                            .thenAccept(renderable -> testViewRenderable = renderable);
-
-
-                     */
+                    play_proc();
                     Log.i("Here", "Proclamtion has been detected, and sets addmodel to true");
-
                     addProcAdudio = false;
 
                 }
             }
         }
 
+    }
+
+    private void play_proc(){
+        Log.i("Here Media player", "Sound should play now");
+        MediaPlayer mp = MediaPlayer.create(this, R.raw.proclamation_audio);
+        mp.start();
+        ViewRenderable.builder()
+                .setView(this, R.layout.play_audio)
+                .build()
+                .thenAccept(renderable -> play_audio = renderable);
     }
 
 
