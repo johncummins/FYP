@@ -15,10 +15,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".DisplayARCamera"
             android:label="@string/title_activity_display_arcamera"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".HomeActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

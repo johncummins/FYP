@@ -27,12 +27,14 @@ import com.google.ar.sceneform.ux.TransformableNode;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
-import android.widget.Toolbar;
+
 
 import java.io.IOError;
 import java.io.IOException;
@@ -47,7 +49,6 @@ public class DisplayARCamera extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
     FloatingActionButton playButton;
     FloatingActionButton pauseButton;
-    //Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,11 +63,9 @@ public class DisplayARCamera extends AppCompatActivity {
         playButton = findViewById(R.id.play);
         pauseButton = findViewById(R.id.pause);
 
-        //toolbar = findViewById(R.id.toolbarARCamera);
-        //setSupportActionBar(toolbar);
+        Toolbar myToolbar = findViewById(R.id.toolbarARCamera);
+        setSupportActionBar(myToolbar);
 
-        //getSupportActionBar().setDisplayShowHomeEnabled(true);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
 
@@ -158,6 +157,7 @@ public class DisplayARCamera extends AppCompatActivity {
             if (augmentedImage.getTrackingState() == TrackingState.TRACKING){ //if aug img is being tracked
                 if (augmentedImage.getName().equals("bowl") && addBowlModel == true){ //if img being tracked has name bowl and bool "addBowlmodel" is true
                     playButton.hide();
+                    pauseButton.hide();
                     Log.i("Here", "bowl has been detected, and sets addmodel to true");
                     createModel(arFragment, augmentedImage.createAnchor //then place 3D model ontop of image
                             (augmentedImage.getCenterPose()), //creates anchor in centre of detected image
