@@ -1,11 +1,13 @@
 package com.example.fyp;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.ar.core.Anchor;
 import com.google.ar.core.AugmentedImage;
 import com.google.ar.core.AugmentedImageDatabase;
@@ -26,7 +28,11 @@ import com.google.ar.sceneform.ux.TransformableNode;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.provider.MediaStore;
 import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
+import android.widget.Toolbar;
 
 import java.io.IOError;
 import java.io.IOException;
@@ -38,25 +44,29 @@ public class DisplayARCamera extends AppCompatActivity {
     private CustomARFragment arFragment;
     boolean addBowlModel = true;
     boolean addProcAdudio = true;
-    public ViewRenderable play_audio;
+    private MediaPlayer mediaPlayer;
+    FloatingActionButton playButton;
+    FloatingActionButton pauseButton;
+    //Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_arcamera);
 
-        try{
-            ViewRenderable.builder()
-                .setView(this, R.layout.play_audio)
-                .build().thenAccept(renderable -> play_audio = renderable);
-        }catch (IOError error){
-            error.printStackTrace();
-        }
-
         arFragment = (CustomARFragment) getSupportFragmentManager().findFragmentById(R.id.sceneform_fragment);
         assert arFragment != null;
         arFragment.getPlaneDiscoveryController().hide(); //hides the hand that moves at the start of AR session
         arFragment.getArSceneView().getScene().addOnUpdateListener(this::onUpdateFrame); // everytime sceneview is updated the func onupdateframe will be called
+        mediaPlayer = MediaPlayer.create(this, R.raw.proclamation_audio);
+        playButton = findViewById(R.id.play);
+        pauseButton = findViewById(R.id.pause);
+
+        //toolbar = findViewById(R.id.toolbarARCamera);
+        //setSupportActionBar(toolbar);
+
+        //getSupportActionBar().setDisplayShowHomeEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
 
@@ -147,6 +157,7 @@ public class DisplayARCamera extends AppCompatActivity {
         for (AugmentedImage augmentedImage : augmentedImages){ //for each image aug image in augDB
             if (augmentedImage.getTrackingState() == TrackingState.TRACKING){ //if aug img is being tracked
                 if (augmentedImage.getName().equals("bowl") && addBowlModel == true){ //if img being tracked has name bowl and bool "addBowlmodel" is true
+                    playButton.hide();
                     Log.i("Here", "bowl has been detected, and sets addmodel to true");
                     createModel(arFragment, augmentedImage.createAnchor //then place 3D model ontop of image
                             (augmentedImage.getCenterPose()), //creates anchor in centre of detected image
@@ -157,7 +168,8 @@ public class DisplayARCamera extends AppCompatActivity {
                 //augmentedImage.getName().equals("proclamation1") // can be added in below if i want two proclamtion pictures
 
                 if (augmentedImage.getName().equals("proclamation") && addProcAdudio == true) { //if img being tracked has name proclamation and bool "addprocaudio" is true
-                    play_proc();
+                    Toast.makeText(this, "Audio file detected, press play to listen!", Toast.LENGTH_LONG).show();
+                    playButton.show();
                     Log.i("Here", "Proclamtion has been detected, and sets addmodel to true");
                     addProcAdudio = false;
 
@@ -167,14 +179,18 @@ public class DisplayARCamera extends AppCompatActivity {
 
     }
 
-    private void play_proc(){
-        Log.i("Here Media player", "Sound should play now");
-        MediaPlayer mp = MediaPlayer.create(this, R.raw.proclamation_audio);
-        mp.start();
-        ViewRenderable.builder()
-                .setView(this, R.layout.play_audio)
-                .build()
-                .thenAccept(renderable -> play_audio = renderable);
+    public void playAudio(View view){
+        Log.i("Here: play button pressed", "audio will play now");
+        mediaPlayer.start();
+        pauseButton.show();
+        playButton.hide();
+    }
+
+    public void pauseAudio(View view){
+        Log.i("Here: pause button pressed", "audio will stop playing now");
+        mediaPlayer.pause();
+        pauseButton.hide();
+        playButton.show();
     }
 
 

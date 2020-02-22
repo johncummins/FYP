@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="bottom"
+    android:background="@drawable/museum_exterior">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Welcome"
+        android:textSize="90sp" />
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_gravity="bottom"
         android:background="@color/colorPrimaryDark">
-
 
         <Button
             android:id="@+id/Maps"
@@ -17,44 +31,38 @@
             android:layout_gravity="center"
             android:background="@color/colorPrimaryDark"
             android:drawableLeft="@android:drawable/ic_dialog_map"
+            android:onClick="showMaps"
             android:text="Maps"
             android:textAlignment="center"
             android:textColor="@android:color/background_light" />
 
+            <Button
+                android:id="@+id/AR"
+                android:layout_width="145dp"
+                android:layout_height="80dp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/rounded_corners"
+                android:drawableTop="@drawable/ic_remove_red_eye_black_24dp"
+                android:text="AR"
+                android:textAlignment="center"
+                android:textSize="18dp"
+                android:onClick="arCamera"/>
 
-        <Button
-            android:id="@+id/AR"
-            android:layout_width="145dp"
-            android:layout_height="80dp"
-            android:layout_gravity="bottom"
-            android:background="@drawable/rounded_corners"
-            android:drawableTop="@drawable/ic_remove_red_eye_black_24dp"
-            android:text="AR"
-            android:textAlignment="center"
-            android:textSize="18dp"/>
-
-        <Button
-            android:id="@+id/More"
-            android:layout_width="135dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:background="@color/colorPrimaryDark"
-            android:drawableRight="@android:drawable/stat_notify_more"
-            android:text="More"
-            android:textAlignment="center"
-            android:textColor="@android:color/background_light" />
-
-
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/welcomeimage"></ImageView>
-
-
-
-
+            <Button
+                android:id="@+id/More"
+                android:layout_width="135dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:background="@color/colorPrimaryDark"
+                android:drawableRight="@android:drawable/stat_notify_more"
+                android:text="More"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_light" />
     </LinearLayout>
+
+</LinearLayout>
+
+
 
 
 
