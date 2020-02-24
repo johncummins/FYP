@@ -20,10 +20,9 @@ public class HomeActivity extends AppCompatActivity {
 
     public void showMaps (View view){
         Log.i("Maps button pressed", "Maps class is called");
-        //setContentView(R.layout.activity_maps);
+        Intent startARCamera = new Intent(this, Maps.class );
+        startActivity(startARCamera);
     }
-
-
 
 
     @Override

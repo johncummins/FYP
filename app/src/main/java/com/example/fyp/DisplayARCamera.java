@@ -65,6 +65,7 @@ public class DisplayARCamera extends AppCompatActivity {
 
         Toolbar myToolbar = findViewById(R.id.toolbarARCamera);
         setSupportActionBar(myToolbar);
+        getSupportActionBar().setTitle("Back");
 
     }
 
@@ -157,7 +158,7 @@ public class DisplayARCamera extends AppCompatActivity {
             if (augmentedImage.getTrackingState() == TrackingState.TRACKING){ //if aug img is being tracked
                 if (augmentedImage.getName().equals("bowl") && addBowlModel == true){ //if img being tracked has name bowl and bool "addBowlmodel" is true
                     playButton.hide();
-                    pauseButton.hide();
+                    //pauseButton.hide();
                     Log.i("Here", "bowl has been detected, and sets addmodel to true");
                     createModel(arFragment, augmentedImage.createAnchor //then place 3D model ontop of image
                             (augmentedImage.getCenterPose()), //creates anchor in centre of detected image
