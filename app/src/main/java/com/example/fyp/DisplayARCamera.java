@@ -49,6 +49,7 @@ public class DisplayARCamera extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
     FloatingActionButton playButton;
     FloatingActionButton pauseButton;
+    FloatingActionButton infoButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +63,7 @@ public class DisplayARCamera extends AppCompatActivity {
         mediaPlayer = MediaPlayer.create(this, R.raw.proclamation_audio);
         playButton = findViewById(R.id.play);
         pauseButton = findViewById(R.id.pause);
+        infoButton = findViewById(R.id.infoButton);
 
         Toolbar myToolbar = findViewById(R.id.toolbarARCamera);
         setSupportActionBar(myToolbar);
@@ -158,7 +160,10 @@ public class DisplayARCamera extends AppCompatActivity {
             if (augmentedImage.getTrackingState() == TrackingState.TRACKING){ //if aug img is being tracked
                 if (augmentedImage.getName().equals("bowl") && addBowlModel == true){ //if img being tracked has name bowl and bool "addBowlmodel" is true
                     playButton.hide();
+                    Toast.makeText(this, "Extra information found, click the i to read more about this artifact", Toast.LENGTH_LONG).show();
+                    infoButton.show();
                     //pauseButton.hide();
+
                     Log.i("Here", "bowl has been detected, and sets addmodel to true");
                     createModel(arFragment, augmentedImage.createAnchor //then place 3D model ontop of image
                             (augmentedImage.getCenterPose()), //creates anchor in centre of detected image

@@ -6,11 +6,18 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_display_arcamera">DisplayARCamera</string>
     <string name="title_activity_maps">Maps</string>
-    <string name="tab_text_1">Ground&#10;Floor</string>
-    <string name="tab_text_2">1st&#10;Floor</string>
-    <string name="tab_text_3">2nd&#10;Floor</string>
+    <string name="tab_text_1_maps">Ground&#10;Floor</string>
+    <string name="tab_text_2_maps">1st&#10;Floor</string>
+    <string name="tab_text_3_maps">2nd&#10;Floor</string>
     <string name="tab_text_11">Ground</string>
     <string name="tab_text_21">1st</string>
     <string name="tab_text_31">2nd</string>
     <string name="swipeLeft_right"> &lt;-Swipe left and right to change floor -&gt;</string>
+
+    <string name="tab_text_home">Home</string>
+    <string name="tab_text_explore">Explore</string>
+    <string name="tab_text_events">Events</string>
+    <string name="tab_text_gallery">Gallery</string>
+
+
 </resources>

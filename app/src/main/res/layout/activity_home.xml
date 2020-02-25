@@ -1,35 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="bottom"
-    android:alpha="@dimen/activity_horizontal_margin"
+    android:layout_alignParentTop="true"
     android:background="@drawable/museum_exterior">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Welcome"
-        android:textSize="90sp" />
-
-
-    <LinearLayout
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabs_home"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_gravity="bottom"
+        android:layout_gravity="top"
+        android:background="@color/colorPrimaryDark"
+        app:tabIndicatorColor="#4279a3"
+        app:tabTextColor="@android:color/background_light" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"></androidx.viewpager.widget.ViewPager>
+    <!--In the above viewPager, there might be an issue with the height (560dp) only guessed this height, changed acuse of buttons at bottom-->
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:background="@color/colorPrimaryDark">
 
         <Button
             android:id="@+id/Maps"
             android:layout_width="135dp"
-            android:layout_height="60dp"
+            android:layout_height="80dp"
             android:layout_gravity="center"
+            android:layout_alignParentLeft="true"
             android:background="@color/colorPrimaryDark"
             android:drawableLeft="@android:drawable/ic_dialog_map"
             android:onClick="showMaps"
@@ -41,28 +47,28 @@
             android:id="@+id/AR"
             android:layout_width="145dp"
             android:layout_height="80dp"
-            android:layout_gravity="bottom"
+            android:layout_centerHorizontal="true"
             android:background="@drawable/rounded_corners"
             android:drawableTop="@drawable/ic_remove_red_eye_black_24dp"
-            android:hapticFeedbackEnabled="true"
             android:onClick="arCamera"
             android:text="AR"
             android:textAlignment="center"
             android:textSize="18dp" />
 
         <Button
-            android:id="@+id/More"
+            android:id="@+id/Trivia"
             android:layout_width="135dp"
-            android:layout_height="60dp"
+            android:layout_height="80dp"
             android:layout_gravity="center"
+            android:layout_alignParentRight="true"
             android:background="@color/colorPrimaryDark"
             android:drawableRight="@android:drawable/stat_notify_more"
-            android:text="More"
+            android:text="Trivia"
             android:textAlignment="center"
             android:textColor="@android:color/background_light" />
-    </LinearLayout>
+    </RelativeLayout>
 
-</LinearLayout>
+</RelativeLayout>
 
 
 
