@@ -31,8 +31,10 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -160,20 +162,27 @@ public class DisplayARCamera extends AppCompatActivity {
             if (augmentedImage.getTrackingState() == TrackingState.TRACKING){ //if aug img is being tracked
                 if (augmentedImage.getName().equals("bowl") && addBowlModel == true){ //if img being tracked has name bowl and bool "addBowlmodel" is true
                     playButton.hide();
-                    Toast.makeText(this, "Extra information found, click the i to read more about this artifact", Toast.LENGTH_LONG).show();
+
+                    Toast toast = Toast.makeText(this, "Click the \"i\" to find out more \nabout this artifact", Toast.LENGTH_SHORT);
+                    TextView v =toast.getView().findViewById(R.id.BowlToast);
+                    if( v != null) v.setGravity(Gravity.CENTER);
+                    toast.show();
+
+                    //Toast.makeText(this, "Click the \"i\" to find out more about this artifact", Toast.LENGTH_LONG).show();
                     infoButton.show();
                     //pauseButton.hide();
 
                     Log.i("Here", "bowl has been detected, and sets addmodel to true");
                     createModel(arFragment, augmentedImage.createAnchor //then place 3D model ontop of image
                             (augmentedImage.getCenterPose()), //creates anchor in centre of detected image
-                            Uri.parse("model_199399840789.sfb")); // model of bowl.sfb)
+                            Uri.parse("model_899146844314.sfb")); // model of bowl.sfb)
                     addBowlModel = false; //this ensures model is only added once
                 }
 
                 //augmentedImage.getName().equals("proclamation1") // can be added in below if i want two proclamtion pictures
 
                 if (augmentedImage.getName().equals("proclamation") && addProcAdudio == true) { //if img being tracked has name proclamation and bool "addprocaudio" is true
+                    infoButton.hide();
                     Toast.makeText(this, "Audio file detected, press play to listen!", Toast.LENGTH_LONG).show();
                     playButton.show();
                     Log.i("Here", "Proclamtion has been detected, and sets addmodel to true");

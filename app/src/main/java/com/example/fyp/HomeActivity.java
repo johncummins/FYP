@@ -26,8 +26,8 @@ public class HomeActivity extends AppCompatActivity {
 
     public void showMaps (View view){
         Log.i("Maps button pressed", "Maps class is called");
-        Intent startARCamera = new Intent(this, Maps.class );
-        startActivity(startARCamera);
+        Intent startMaps = new Intent(this, Maps.class );
+        startActivity(startMaps);
     }
 
 
@@ -43,6 +43,12 @@ public class HomeActivity extends AppCompatActivity {
         TabLayout tabs = findViewById(R.id.tabs_home);
         tabs.setupWithViewPager(viewPager_home);
         findViewById(R.id.tabs_home).bringToFront();
-        
+
+    }
+
+    public void showTrivia (View view){
+        Log.i("Trivia button pressed", "trivia class is called");
+        Intent trivia = new Intent(this, Trivia.class );
+        startActivity(trivia);
     }
 }

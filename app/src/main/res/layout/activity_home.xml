@@ -64,6 +64,7 @@
             android:background="@color/colorPrimaryDark"
             android:drawableRight="@android:drawable/stat_notify_more"
             android:text="Trivia"
+            android:onClick="showTrivia"
             android:textAlignment="center"
             android:textColor="@android:color/background_light" />
     </RelativeLayout>

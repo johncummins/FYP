@@ -24,6 +24,9 @@ android {
     }
 }
 
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -35,12 +38,20 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'com.google.ar:core:1.4.0'
+    //implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.15.0'
     implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.4.0'
+    implementation 'com.google.firebase:firebase-analytics:17.2.2'
     //implementaion 'com.google.android.gms:play-services-auth:17.0.0'
+    implementation 'com.google.firebase:firebase-firestore:21.4.0'
 }
 
 
-sceneform.asset('sampledata/Smoothie3DBowlModel/model_199399840789.obj',
+sceneform.asset('sampledata/Smoothie3DBowlModel/model_bowl.obj',
         'default',
-        'sampledata/Smoothie3DBowlModel/model_199399840789.sfa',
-        'src/main/assets/model_199399840789')
+        'sampledata/Smoothie3DBowlModel/model_bowl.sfa',
+        'src/main/assets/model_bowl')
+
+sceneform.asset('sampledata/Smoothie3DBowlModel/model_899146844314.obj',
+        'default',
+        'sampledata/Smoothie3DBowlModel/model_899146844314.sfa',
+        'src/main/assets/model_899146844314')

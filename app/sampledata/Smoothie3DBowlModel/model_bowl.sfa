@@ -9,7 +9,7 @@
          name: "Textured",
          parameters: [
             {
-               baseColor: null,
+               baseColor: "texture_bowl",
             },
             {
                baseColorTint: [
@@ -39,22 +39,16 @@
          "Orientation",
       ],
       collision: {},
-      file: "sampledata/Smoothie3DBowlModel/model_199399840789.obj",
-      name: "model_199399840789",
+      file: "sampledata/Smoothie3DBowlModel/model_bowl.obj",
+      name: "model_bowl",
       recenter: "root",
    },
-
-     samplers: [
+   samplers: [
       {
-        file: 'sampledata/Smoothie3DBowlModel/bowlimage.jpeg',
-        name: 'bowlimage',
-        pipeline_name: 'bowlimage.jpeg',
-        injections: [
-         {usage: "Normal",},
-       ],
+         file: "sampledata/Smoothie3DBowlModel/texture_bowl.jpg",
+         name: "texture_bowl",
+         pipeline_name: "texture_bowl.jpg",
       },
-    ],
-
-    version: "0.54:1",
-   //version: "0.52:1",
+   ],
+   version: "0.52:1",
 }
