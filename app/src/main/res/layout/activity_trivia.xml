@@ -4,12 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Trivia">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    tools:context=".Trivia"
+    android:background="@color/blue2">
 
 
         <com.google.android.material.appbar.AppBarLayout
@@ -30,28 +26,59 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <TextView
+            android:id="@+id/questionNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:textAlignment="textEnd"
-            android:text="Time : 0:00"
+            android:layout_marginTop="90dp"
+            android:textAlignment="center"
+            android:textSize="20dp"
             android:layout_marginRight="15dp"
             android:layout_marginLeft="15dp"
             android:textColor="@color/colorPrimaryDark">
-
         </TextView>
 
+        <Chronometer
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:id="@+id/chron"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="140dp"
+            android:textSize="18sp">
+        </Chronometer>
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:text="Score: 0/0"
+        android:layout_marginEnd="15dp"
+        android:layout_alignParentEnd="true"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp">
+    </TextView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/Lin1">
+
+
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
             android:id="@+id/questionBox"
-            android:textAlignment="center"
-            android:text="This is the text box\nfor the questions"
+            android:layout_width="match_parent"
+            android:layout_height="145dp"
+            android:layout_gravity="center_horizontal"
             android:textSize="24sp"
             android:textColor="@color/blue2"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="190dp"
             android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp">
+            android:layout_marginLeft="15dp"
+            android:gravity="center"
+            android:textAlignment="center">
         </TextView>
 
         <RadioGroup
@@ -62,54 +89,44 @@
             android:layout_marginRight="15dp"
             android:layout_marginLeft="15dp">
 
-            <RadioButton
-                android:layout_width="wrap_content"
+            <Button
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/radio_button1"
-                android:text="Option 1"
+                android:id="@+id/button1"
                 android:textColor="@color/blue2"
-                android:textSize="16dp">
-            </RadioButton>
+                android:textSize="16dp"
+                android:layout_gravity="center">
+            </Button>
 
-            <RadioButton
-                android:layout_width="wrap_content"
+            <Button
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/radio_button2"
-                android:text="Option 2"
+                android:id="@+id/button2"
                 android:layout_marginTop="6dp"
                 android:textColor="@color/blue2"
-                android:textSize="16dp">
-            </RadioButton>
+                android:textSize="16dp"
+                android:layout_gravity="center">
+            </Button>
 
-            <RadioButton
-                android:layout_width="wrap_content"
+            <Button
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/radio_button3"
-                android:text="Option 3"
-                android:layout_marginTop="6dp"
+                android:id="@+id/button3"
                 android:textColor="@color/blue2"
-                android:textSize="16dp">
-            </RadioButton>
+                android:textSize="16dp"
+                android:layout_marginTop="6dp"
+                android:layout_gravity="center">
+            </Button>
 
-            <RadioButton
-                android:layout_width="wrap_content"
+            <Button
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/radio_button4"
-                android:text="Option 4"
-                android:layout_marginTop="6dp"
+                android:id="@+id/button4"
                 android:textColor="@color/blue2"
-                android:textSize="16dp">
-            </RadioButton>
+                android:textSize="16dp"
+                android:layout_marginTop="6dp"
+                android:layout_gravity="center">
+            </Button>
         </RadioGroup>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="1/10"
-            android:textSize="20dp"
-            android:textAlignment="center"
-            android:textColor="@color/colorPrimaryDark">
-        </TextView>
     </LinearLayout>
 </RelativeLayout>

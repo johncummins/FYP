@@ -30,6 +30,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/colorPrimaryDark">
 
+
         <Button
             android:id="@+id/Maps"
             android:layout_width="135dp"
@@ -67,6 +68,7 @@
             android:onClick="showTrivia"
             android:textAlignment="center"
             android:textColor="@android:color/background_light" />
+
     </RelativeLayout>
 
 </RelativeLayout>
