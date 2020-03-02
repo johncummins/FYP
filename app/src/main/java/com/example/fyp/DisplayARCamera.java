@@ -34,6 +34,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,7 +52,7 @@ public class DisplayARCamera extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
     FloatingActionButton playButton;
     FloatingActionButton pauseButton;
-    FloatingActionButton infoButton;
+    Button infoButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,13 +164,13 @@ public class DisplayARCamera extends AppCompatActivity {
                 if (augmentedImage.getName().equals("bowl") && addBowlModel == true){ //if img being tracked has name bowl and bool "addBowlmodel" is true
                     playButton.hide();
 
-                    Toast toast = Toast.makeText(this, "Click the \"i\" to find out more \nabout this artifact", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(this, "Click the button to find out more \n" + "about this artifact", Toast.LENGTH_LONG);
                     TextView v =toast.getView().findViewById(R.id.BowlToast);
                     if( v != null) v.setGravity(Gravity.CENTER);
                     toast.show();
 
                     //Toast.makeText(this, "Click the \"i\" to find out more about this artifact", Toast.LENGTH_LONG).show();
-                    infoButton.show();
+                    infoButton.setVisibility(View.VISIBLE);
                     //pauseButton.hide();
 
                     Log.i("Here", "bowl has been detected, and sets addmodel to true");
@@ -182,12 +183,11 @@ public class DisplayARCamera extends AppCompatActivity {
                 //augmentedImage.getName().equals("proclamation1") // can be added in below if i want two proclamtion pictures
 
                 if (augmentedImage.getName().equals("proclamation") && addProcAdudio == true) { //if img being tracked has name proclamation and bool "addprocaudio" is true
-                    infoButton.hide();
+                    infoButton.setVisibility(View.INVISIBLE);
                     Toast.makeText(this, "Audio file detected, press play to listen!", Toast.LENGTH_LONG).show();
                     playButton.show();
                     Log.i("Here", "Proclamtion has been detected, and sets addmodel to true");
                     addProcAdudio = false;
-
                 }
             }
         }
@@ -231,6 +231,11 @@ public class DisplayARCamera extends AppCompatActivity {
         node.setParent(anchorNode); //setting parent of transformable node as anchor
         fragment.getArSceneView().getScene().addChild(anchorNode); // added anchor to scene(adds both transformable and anchor to scene)
         node.select(); //selecting transformable node, so it can be interacted with
+    }
+
+    public void moreInfo(View view){
+        Intent startMoreInfo = new Intent(this, more_info_bowl.class );
+        startActivity(startMoreInfo);
     }
 
 }

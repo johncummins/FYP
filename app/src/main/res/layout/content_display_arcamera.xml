@@ -21,7 +21,8 @@
         android:clickable="true"
         android:onClick="playAudio"
         android:visibility="invisible"
-        app:srcCompat="@android:drawable/ic_media_play" />
+        app:srcCompat="@android:drawable/ic_media_play"
+        android:tint="@color/grey" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/pause"
@@ -34,17 +35,20 @@
         android:visibility="invisible"
         app:srcCompat="@android:drawable/ic_media_pause" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+
+    <Button
         android:id="@+id/infoButton"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="12dp"
+        android:background="@drawable/rounded_corners"
         android:clickable="true"
-        android:visibility="invisible"
-        app:backgroundTint="@color/blue_grey"
-        app:fabSize="auto"
-        app:srcCompat="@android:drawable/ic_menu_info_details" />
+        android:onClick="moreInfo"
+        android:text="Find out more..."
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:visibility="invisible" />
 
     <TextView
         android:layout_width="wrap_content"

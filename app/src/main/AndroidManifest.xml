@@ -15,7 +15,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".end_of_quiz"></activity>
+        <activity
+            android:name=".more_info_bowl"
+            android:label="@string/title_activity_more_info_bowl"
+            android:parentActivityName=".DisplayARCamera"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".end_of_quiz" />
         <activity android:name=".Start_quiz" />
         <activity
             android:name=".Trivia"

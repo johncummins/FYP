@@ -4,8 +4,8 @@
     <string name="title_activity_fullscreen_home">FullscreenHomeActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="title_activity_display_arcamera">DisplayARCamera</string>
-    <string name="title_activity_maps">Maps</string>
+    <string name="title_activity_display_arcamera">AR</string>
+    <string name="title_activity_maps">Floor Plan</string>
     <string name="tab_text_1_maps">Ground&#10;Floor</string>
     <string name="tab_text_2_maps">1st&#10;Floor</string>
     <string name="tab_text_3_maps">2nd&#10;Floor</string>
@@ -18,6 +18,22 @@
     <string name="tab_text_explore">Explore</string>
     <string name="tab_text_events">Events</string>
     <string name="tab_text_gallery">Gallery</string>
+    <string name="title_activity_more_info_bowl">North Devon Chafing Fish</string>
+    <string name="large_text">
+        " Date: 1600s\n"
+        "Location: North Devon\n\n""North Devon in south-west England was renowned as a centre for pottery"
+        " production and fragments are often found in excavations in throughout Ireland. Imports from"
+        "the American colonies were roued through English pors, before being sent to Ireland, giving"
+        "merchants in the north Devon ports the opportunity to add their pottery onto the ships"
+        "bound for Galway.\n\n""Separate cargoes of just pottery were also sent to Galway, John Davie, a merchant from"
+        "Bideford in North Devon, for example, shipped ‘one hundred dozen of earthenware’ in 1672."
+        "The importation of pottery from North Devon to Ireland seems to have peaked at the end of"
+        "the 17th century and dwindled during the following century.\n\n"
+
+        "Loan from National Museum of Ireland\n"
+
+    </string>
+    <string name="action_settings">Settings</string>
 
 
 </resources>
