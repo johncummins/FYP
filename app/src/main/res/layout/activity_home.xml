@@ -20,7 +20,9 @@
         android:id="@+id/view_pager_home"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"></androidx.viewpager.widget.ViewPager>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    </androidx.viewpager.widget.ViewPager>
     <!--In the above viewPager, there might be an issue with the height (560dp) only guessed this height, changed acuse of buttons at bottom-->
 
 
@@ -28,7 +30,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/colorPrimaryDark">
+        android:background="@color/colorPrimaryDark"
+        android:id="@+id/BottomButtons">
 
 
         <Button

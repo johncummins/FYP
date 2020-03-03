@@ -32,7 +32,7 @@ public class Maps extends AppCompatActivity {
 
         Toolbar myToolbar = findViewById(R.id.toolbarMaps);
         setSupportActionBar(myToolbar);
-        getSupportActionBar().setTitle("Back");
+        //getSupportActionBar().setTitle("Back");
 
 
     }

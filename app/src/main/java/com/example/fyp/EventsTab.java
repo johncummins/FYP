@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -20,17 +21,14 @@ public class EventsTab extends Fragment {
         View view = inflater.inflate(R.layout.events_tab_frag, container, false);
 
         WebView webview;
-        Button arButton = view.findViewById(R.id.AR);
-        Button mapsButton = view.findViewById(R.id.Maps);
-        Button triviaButton = view.findViewById(R.id.Trivia);
+        RelativeLayout bottomButtons = view.findViewById(R.id.BottomButtons);
 
-        //webview.getSettings().setJavaScriptEnabled(true);
         webview = view.findViewById(R.id.EventsWebView);
         webview.setWebViewClient(new WebViewClient());
         webview.loadUrl("https://www.galwaycitymuseum.ie/events/");
 
 
-        //onPageFinished(webview, "https://www.galwaycitymuseum.ie/events/", arButton);
+        //onPageFinished(webview, "https://www.galwaycitymuseum.ie/events/", bottomButtons);
         /*
         arButton.setVisibility(View.INVISIBLE);
         mapsButton.setVisibility(View.INVISIBLE);

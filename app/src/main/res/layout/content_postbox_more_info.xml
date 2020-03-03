@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".postbox_more_info"
+    tools:showIn="@layout/activity_postbox_more_info">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/postbox_2ndH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:text="@string/postbox_2ndH"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/postboxtext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/postbox_2ndH"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:text="@string/large_textP"
+            android:textSize="16sp"
+            android:textColor="@color/colorPrimaryDark"/>
+
+
+        <ImageView
+            android:id="@+id/pp1_image"
+            android:layout_width="match_parent"
+            android:layout_height="320dp"
+            android:layout_below="@+id/postboxtext"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="7dp"
+            android:src="@drawable/pp1"
+            android:textColor="@color/colorPrimaryDark">
+
+        </ImageView>
+
+        <TextView
+            android:layout_alignStart="@id/pp1_image"
+            android:layout_alignEnd="@id/pp1_image"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/pp1_caption"
+            android:gravity="center"
+            android:text="Photograph, by Derek Biddulph, of the Penfold Pillar Box\n on the corner of High St and Mainguard St, Galway, c. 1980s.\nGalway City Museum Collection.\n"
+            android:layout_below="@+id/pp1_image"
+            android:textSize="11sp">
+        </TextView>
+
+
+        <TextView
+            android:id="@+id/postboxtext2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pp1_caption"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
+            android:text="@string/large_textP2"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/pp2_image"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_below="@+id/postboxtext2"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="7dp"
+            android:src="@drawable/pp2">
+        </ImageView>
+
+        <TextView
+            android:id="@+id/pp2_caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pp2_image"
+            android:layout_alignEnd="@id/pp2_image"
+            android:layout_alignStart="@id/pp2_image"
+            android:gravity="center"
+            android:text="Penfold Pillarbox, Mainguard Street, Photograph, by Derek Biddulph, of the Penfold Pillar Box on the corner of High St and Mainguard St, Galway, c. 1980s./nGalway City Museum Collection."
+            android:textSize="12sp"
+            android:layout_marginBottom="10dp">
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="15dp"
+            android:text="Source: https://www.ouririshheritage.org/content/archive/place/mo-ghaillimh-fein-my-own-galway/galway-in-30-objects/penfold-pillar-box"
+            android:textSize="10sp"
+            android:layout_below="@+id/pp2_caption"
+            android:layout_marginBottom="10dp">
+
+        </TextView>
+    </RelativeLayout>
+
+</androidx.core.widget.NestedScrollView>
+
+

@@ -8,14 +8,34 @@
     tools:context=".more_info_bowl"
     tools:showIn="@layout/activity_more_info_bowl">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:drawableBottom= "@drawable/pin_img3"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="30dp"
         android:text="@string/large_text"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:id="@+id/bowl_text"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_below="@+id/bowl_text"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="30dp"
+            android:src="@drawable/pin_drop_img">
+
+        </ImageView>
+
+
+    </RelativeLayout>
 
 
 </androidx.core.widget.NestedScrollView>

@@ -49,6 +49,10 @@ public class DisplayARCamera extends AppCompatActivity {
     private CustomARFragment arFragment;
     boolean addBowlModel = true;
     boolean addProcAdudio = true;
+    boolean addPostBox = true;
+    boolean showPostBoxInfoBt = false;
+    boolean showBowlInfoBt = false;
+
     private MediaPlayer mediaPlayer;
     FloatingActionButton playButton;
     FloatingActionButton pauseButton;
@@ -70,8 +74,6 @@ public class DisplayARCamera extends AppCompatActivity {
 
         Toolbar myToolbar = findViewById(R.id.toolbarARCamera);
         setSupportActionBar(myToolbar);
-        getSupportActionBar().setTitle("Back");
-
     }
 
 
@@ -88,6 +90,8 @@ public class DisplayARCamera extends AppCompatActivity {
 
         Bitmap bitmap1 = loadBowlImage();
         Bitmap bitmap2 = loadPoclamImage();
+        Bitmap bitmap3 = loadPPImage();
+
 
         if (bitmap1 == null){
             return false;
@@ -99,14 +103,11 @@ public class DisplayARCamera extends AppCompatActivity {
         augmentedImgDB = new AugmentedImageDatabase(session);
         augmentedImgDB.addImage("bowl", bitmap1); //adding bowl image(specified in loadAugmentedImg function)to the db
         augmentedImgDB.addImage("proclamation", bitmap2); //adding bowl image(specified in loadAugmentedImg function)to the db
-
+        augmentedImgDB.addImage("postbox", bitmap3); //adding post box image(specified in loadAugmentedImg function)to the db
 
         config.setAugmentedImageDatabase(augmentedImgDB); //setting up db
         return true;
-
-
     }
-
 
 
     //This function loads a specified image into the above db
@@ -123,16 +124,24 @@ public class DisplayARCamera extends AppCompatActivity {
         return null;
     }
 
-
     private Bitmap loadPoclamImage(){
         try(InputStream inStreamP = getAssets().open("proclamation.jpeg")){
             return BitmapFactory.decodeStream(inStreamP);
         }
-
         catch(IOException e){
             Log.e("ImageLoad", "IO Exception - image did not load properly", e);
         }
+        return null;
+    }
 
+
+    private Bitmap loadPPImage(){
+        try(InputStream inStream = getAssets().open("post_box.jpeg")){
+            return BitmapFactory.decodeStream(inStream);
+        }
+        catch(IOException e){
+            Log.e("ImageLoad", "IO Exception - image did not load properly", e);
+        }
         return null;
     }
 
@@ -169,7 +178,7 @@ public class DisplayARCamera extends AppCompatActivity {
                     if( v != null) v.setGravity(Gravity.CENTER);
                     toast.show();
 
-                    //Toast.makeText(this, "Click the \"i\" to find out more about this artifact", Toast.LENGTH_LONG).show();
+                    showBowlInfoBt = true; //if statment for the info button, brings user to more_info_bowl.class
                     infoButton.setVisibility(View.VISIBLE);
                     //pauseButton.hide();
 
@@ -182,12 +191,20 @@ public class DisplayARCamera extends AppCompatActivity {
 
                 //augmentedImage.getName().equals("proclamation1") // can be added in below if i want two proclamtion pictures
 
+                //For proclamation image
                 if (augmentedImage.getName().equals("proclamation") && addProcAdudio == true) { //if img being tracked has name proclamation and bool "addprocaudio" is true
                     infoButton.setVisibility(View.INVISIBLE);
                     Toast.makeText(this, "Audio file detected, press play to listen!", Toast.LENGTH_LONG).show();
                     playButton.show();
                     Log.i("Here", "Proclamtion has been detected, and sets addmodel to true");
                     addProcAdudio = false;
+                }
+
+                //For postbox image
+                if (augmentedImage.getName().equals("postbox") && addPostBox == true) { //if img being tracked has name proclamation and bool "addprocaudio" is true
+                    showPostBoxInfoBt = true;//if statment for the info button, brings user to more_info_bowl.class
+                    infoButton.setVisibility(View.VISIBLE);
+                    Toast.makeText(this, "Penfold Pillar Box detected/n Click to find out more!", Toast.LENGTH_LONG).show();
                 }
             }
         }
@@ -234,8 +251,19 @@ public class DisplayARCamera extends AppCompatActivity {
     }
 
     public void moreInfo(View view){
-        Intent startMoreInfo = new Intent(this, more_info_bowl.class );
-        startActivity(startMoreInfo);
+
+        if(showPostBoxInfoBt = true) {
+            showPostBoxInfoBt = false;
+            Log.i("Here", "Insdie the startmoreInfopp");
+            Intent startMoreInfoPP = new Intent(this, postbox_more_info.class);
+            startActivity(startMoreInfoPP);
+        }
+        if(showBowlInfoBt = true) {
+            showBowlInfoBt = false;
+            Log.i("Here", "Insdie the startmoreinfo, bowl one");
+            Intent startMoreInfo = new Intent(this, more_info_bowl.class);
+            startActivity(startMoreInfo);
+        }
     }
 
 }

@@ -28,12 +28,31 @@
         "bound for Galway.\n\n""Separate cargoes of just pottery were also sent to Galway, John Davie, a merchant from"
         "Bideford in North Devon, for example, shipped ‘one hundred dozen of earthenware’ in 1672."
         "The importation of pottery from North Devon to Ireland seems to have peaked at the end of"
-        "the 17th century and dwindled during the following century.\n\n"
-
-        "Loan from National Museum of Ireland\n"
+        "the 17th century and dwindled during the following century."
 
     </string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_postbox_more_info">Penfold Pillar Box</string>
+    <string name="postbox_2ndH">
+        "Date: c.1872\n""Location: Corner of High street and Mainguard Street\n"
+    </string>
+
+    <string name="large_textP">
+        "This cast-iron hexagonal Penfold Pillar Box originally stood on the corner of High St and Mainguard St, Galway. It was first placed there in the 1870s and remained in situ until c. 2004 when it was acquired on loan from An Post. Penfold Pillar Boxes, designed by John Wornham Penfold (1828-1909), architect and surveyor, were manufactured by ‘Cochrane and Co. Dudley’, in the West Midlands, between 1866 and 1879; this particular example was made c. 1872. \n\nThe earliest of these post boxes were painted a bronze-green colour but from about 1874 onwards they were painted red. These ‘imperial’ post boxes also incorporated Queen Victoria’s royal cipher (VR) and the Royal Coat of Arms; interestingly (and unusually), someone has removed the coat of arms from this Galway example. About 300 of these post boxes were manufactured and, apart from Britain and Ireland, surviving examples are to be found in such far-flung places as Australian, New Zealand and India (Davies and Murphy, 2008, 47)."
+    </string>
+
+    <string name="large_textP2">
+"Irish Free State
+Although this Galway postbox still bears the Royal Cipher of Queen Victoria, it has been re-painted “Saorstát Green” (Ferguson, 2009, 42). The Irish Free State was acutely aware of the symbolic value of the postal service, formerly such an important arm of the British Administration in Ireland. In Imagined Communities, Benedict Anderson wrote that ‘successful revolutionaries also inherit the wiring of the old state … like the complex electrical system in any large mansion when the owner has fled, the state awaits the new owner’s hand at the switch to be very much its old brilliant self again’ (2006, 164).
+
+In 1922, the Postmaster General of the Irish Free State decreed that all postboxes were to be painted green. The change of governance was symbolised by the change of paint. Postage stamps were treated similarly. Stamps that had previously been issued by the British administration, bearing the head of King George V, were released carrying an overprinted statement, Rialtas Sealadach na hÉireann 1922 (Provisional Government of Ireland 1922). The overprints, first issued in 1922, were gradually phased out of usage and replaced by specially commissioned series of stamps bearing the name “Éire”.
+
+Galway in 1922
+Apart from the re-painting of postboxes, there were several noticeable changes in “Independent Galway”. In February 1922, Renmore Barracks, the regimental home of the Connaught Rangers in Galway, was handed over to the Irish Free State. In May, the statue of Lord Dunkellin, the Anglo-Irish MP for Galway City and County, which had graced Eyre Square since 1873, was pulled from its pedestal, dragged through the streets of Galway and dumped in the River Corrib.
+
+Galway, however, didn’t engage in the wholesale “cleansing of Britishness” as was witnessed in some Irish towns. Its city-centre streets retained their colonial names; for example, Queen’s Street, Victoria Place, Eyre Square, Eyre Street, William’s Street, Williamsgate Street, and Eglinton Street. Moreover, the Crimean Cannon, gifted by the British War Department in 1857, were retained as ornamental features in the town’s principal square."
+
+    </string>
 
 
 </resources>

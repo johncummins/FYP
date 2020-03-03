@@ -16,10 +16,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".postbox_more_info"
+            android:label="@string/title_activity_postbox_more_info"
+            android:parentActivityName=".DisplayARCamera"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.fyp.DisplayARCamera" />
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@drawable/gradient_2" />
+
+        <activity
             android:name=".more_info_bowl"
             android:label="@string/title_activity_more_info_bowl"
             android:parentActivityName=".DisplayARCamera"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".end_of_quiz" />
         <activity android:name=".Start_quiz" />
         <activity
