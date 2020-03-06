@@ -1,0 +1,81 @@
+{
+   bound_relative_root: {
+      x: 0.5,
+      y: 0,
+      z: 0.5,
+   },
+   materials: [
+      {
+         name: "Material",
+         parameters: [
+            {
+               baseColor: null,
+            },
+            {
+               baseColorTint: [
+                  0.80000000000000004,
+                  0.80000000000000004,
+                  0.80000000000000004,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.078326000000000007,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "PostBox01.001",
+         parameters: [
+            {
+               baseColor: "PostBox01",
+            },
+            {
+               baseColorTint: [
+                  0.80000000000000004,
+                  0.80000000000000004,
+                  0.80000000000000004,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.093865000000000004,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+   ],
+   model: {
+      attributes: [
+         "Position",
+         "TexCoord",
+         "Orientation",
+      ],
+      collision: {},
+      file: "sampledata/PostBox/red_postbox.obj",
+      name: "red_postbox",
+      recenter: "root",
+      scale: 0.0096016000000000001,
+   },
+   samplers: [
+      {
+         file: "sampledata/PostBox/PostBox01.png",
+         name: "PostBox01",
+         pipeline_name: "PostBox01.png",
+      },
+   ],
+   version: "0.52:1",
+}

@@ -49,7 +49,9 @@ public class HomeActivity extends AppCompatActivity {
     public void showTrivia (View view){
         Log.i("Trivia button pressed", "trivia class is called");
 
-        Intent startQ = new Intent(this, postbox_more_info.class );
+        Intent startQ = new Intent(this, Trivia.class );
         startActivity(startQ);
     }
+
+
 }

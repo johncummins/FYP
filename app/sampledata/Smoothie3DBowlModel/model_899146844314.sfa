@@ -20,10 +20,10 @@
                ],
             },
             {
-               metallic: 1,
+               metallic: 0.3,
             },
             {
-               roughness: 1,
+               roughness: 0.7,
             },
             {
                opacity: null,
@@ -42,6 +42,8 @@
       file: "sampledata/Smoothie3DBowlModel/model_899146844314.obj",
       name: "model_899146844314",
       recenter: "root",
+      scale: 0.65,
+
    },
    samplers: [
       {

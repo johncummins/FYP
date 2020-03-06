@@ -13,8 +13,8 @@
             },
             {
                baseColorTint: [
-                  1,
-                  1,
+                  0.8,
+                  0.8,
                   1,
                   1,
                ],
@@ -42,6 +42,7 @@
       file: "sampledata/Smoothie3DBowlModel/model_bowl.obj",
       name: "model_bowl",
       recenter: "root",
+      scale: 0.7,
    },
    samplers: [
       {

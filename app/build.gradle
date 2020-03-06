@@ -57,3 +57,8 @@ sceneform.asset('sampledata/Smoothie3DBowlModel/model_899146844314.obj',
         'default',
         'sampledata/Smoothie3DBowlModel/model_899146844314.sfa',
         'src/main/assets/model_899146844314')
+
+sceneform.asset('sampledata/PostBox/red_postbox.obj',
+        'default',
+        'sampledata/PostBox/red_postbox.sfa',
+        'src/main/assets/red_postbox')

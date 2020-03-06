@@ -10,7 +10,7 @@
         android:id="@+id/sceneform_fragment"
         android:name="com.example.fyp.CustomARFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/play"
@@ -20,9 +20,9 @@
         android:layout_margin="12dp"
         android:clickable="true"
         android:onClick="playAudio"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:srcCompat="@android:drawable/ic_media_play"
-        android:tint="@color/grey" />
+        app:backgroundTint="@color/blue2"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/pause"
@@ -32,23 +32,28 @@
         android:layout_margin="12dp"
         android:clickable="true"
         android:onClick="pauseAudio"
-        android:visibility="invisible"
-        app:srcCompat="@android:drawable/ic_media_pause" />
+        android:visibility="visible"
+        app:srcCompat="@android:drawable/ic_media_pause"
+        app:backgroundTint="@color/blue2"/>
 
 
-    <Button
-        android:id="@+id/infoButton"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/infoButtonFloatingB"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="12dp"
-        android:background="@drawable/rounded_corners"
         android:clickable="true"
-        android:onClick="moreInfo"
         android:text="Find out more..."
         android:textAllCaps="false"
         android:textSize="18sp"
-        android:visibility="invisible" />
+        android:visibility="visible"
+        app:backgroundTint="@color/blue2"
+        app:fabSize="auto"
+        app:rippleColor="@color/blue2"
+        app:srcCompat="@drawable/ic_info1">
+
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
     <TextView
         android:layout_width="wrap_content"

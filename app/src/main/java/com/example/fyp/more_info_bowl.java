@@ -22,15 +22,5 @@ public class more_info_bowl extends AppCompatActivity {
         setContentView(R.layout.activity_more_info_bowl);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
-        /*
-        Drawable drawable = getResources().getDrawable(R.drawable.new_image_pin);
-        drawable.setBounds(0, 0, (int)(drawable.getIntrinsicWidth()*0.5),
-                (int)(drawable.getIntrinsicHeight()*0.5));
-        ScaleDrawable sd = new ScaleDrawable(drawable, 0, scaleWidth, scaleHeight);
-
-         */
-
     }
 }
