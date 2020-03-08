@@ -56,8 +56,30 @@
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/middle_text"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:id="@+id/BowlToast"/>
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/rounded_corners_black"
+        android:text="Here si sthe sample text that goes here"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        android:padding="4dp"/>
+
+    <TextView
+        android:id="@+id/middle_textB"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/rounded_corners_black"
+        android:text="Here si sthe sample text that goes here"
+        android:textAlignment="center"
+        android:textColor="@color/blue2"
+        android:textSize="18dp"
+        android:padding="3.5dp"/>
 
 </FrameLayout>

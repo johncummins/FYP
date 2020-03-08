@@ -43,15 +43,11 @@ public class HomeActivity extends AppCompatActivity {
         TabLayout tabs = findViewById(R.id.tabs_home);
         tabs.setupWithViewPager(viewPager_home);
         findViewById(R.id.tabs_home).bringToFront();
-
     }
 
     public void showTrivia (View view){
         Log.i("Trivia button pressed", "trivia class is called");
-
         Intent startQ = new Intent(this, Start_quiz.class );
         startActivity(startQ);
     }
-
-
 }

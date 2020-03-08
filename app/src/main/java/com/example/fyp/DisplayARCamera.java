@@ -53,6 +53,8 @@ public class DisplayARCamera extends AppCompatActivity {
     boolean addBowlModel = true;
     boolean addProcAdudio = true;
     boolean addPostBox = true;
+    boolean addEamon = true;
+    private TextView middle_text, middle_textB;
 
 
     private MediaPlayer mediaPlayer;
@@ -71,121 +73,67 @@ public class DisplayARCamera extends AppCompatActivity {
         playButton = findViewById(R.id.play);
         pauseButton = findViewById(R.id.pause);
         infoButtonFloatingB  = findViewById(R.id.infoButtonFloatingB);
+        middle_text = findViewById(R.id.middle_text);
+        middle_textB = findViewById(R.id.middle_textB);
 
         playButton.hide();
         pauseButton.hide();
         infoButtonFloatingB.hide();
+        middle_text.setVisibility(View.INVISIBLE);
+        middle_textB.setVisibility(View.INVISIBLE);
 
         Toolbar myToolbar = findViewById(R.id.toolbarARCamera);
         setSupportActionBar(myToolbar);
-
     }
 
 
-    //Context context;
     //This function sets up an augmented image database
     //This function is called in custom ARfragment class
-    public boolean setupAugmentedImgDb(Config config, Session session){
-        //this.context =ctx;
-        AugmentedImageDatabase augmentedImgDB;
-        //loadAugmentedImg newImage = new loadAugmentedImg();
-        //Bitmap bitmap1 = newImage.loadBowlImage();
-        //Bitmap bitmap2 = newImage.loadBowlImage();
+    public void setupAugmentedImgDb(Config config, Session session){
 
-
-        Bitmap bitmap1 = loadBowlImage();
-        Bitmap bitmap2 = loadPoclamImage();
-        Bitmap bitmap3 = loadPPImage();
-
-
-        if (bitmap1 == null){
-            return false;
+        InputStream inS = getResources().openRawResource(R.raw.imagedb);
+        try {
+            AugmentedImageDatabase augmentedImgDB = AugmentedImageDatabase.deserialize(session, inS);
+            config.setAugmentedImageDatabase(augmentedImgDB);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        if (bitmap2 == null){
-            return false;
-        }
-
-        augmentedImgDB = new AugmentedImageDatabase(session);
-        augmentedImgDB.addImage("bowl", bitmap1); //adding bowl image(specified in loadAugmentedImg function)to the db
-        augmentedImgDB.addImage("proclamation", bitmap2); //adding bowl image(specified in loadAugmentedImg function)to the db
-        augmentedImgDB.addImage("postbox", bitmap3); //adding post box image(specified in loadAugmentedImg function)to the db
-
-        config.setAugmentedImageDatabase(augmentedImgDB); //setting up db
-        return true;
     }
-
-
-    //This function loads a specified image into the above db
-    //In this instance here, I am loading the bowl image
-    private Bitmap loadBowlImage(){
-        try(InputStream inStream = getAssets().open("bowlimage.jpeg")){
-            return BitmapFactory.decodeStream(inStream);
-        }
-
-        catch(IOException e){
-            Log.e("ImageLoad", "IO Exception - image did not load properly", e);
-        }
-
-        return null;
-    }
-
-    private Bitmap loadPoclamImage(){
-        try(InputStream inStreamP = getAssets().open("proclamation.jpeg")){
-            return BitmapFactory.decodeStream(inStreamP);
-        }
-        catch(IOException e){
-            Log.e("ImageLoad", "IO Exception - image did not load properly", e);
-        }
-        return null;
-    }
-
-
-    private Bitmap loadPPImage(){
-        try(InputStream inStream = getAssets().open("post_box.jpeg")){
-            return BitmapFactory.decodeStream(inStream);
-        }
-        catch(IOException e){
-            Log.e("ImageLoad", "IO Exception - image did not load properly", e);
-        }
-        return null;
-    }
-
-
-    /*
-            try(InputStream inStreamP = getAssets().open("proclamation1.jpeg")){
-        return BitmapFactory.decodeStream(inStreamP);
-    }
-
-        catch(IOException e){
-        Log.e("ImageLoad", "IO Exception - image did not load properly", e);
-    }
-
-
-     */
-
-
 
 
     private void onUpdateFrame(FrameTime frameTime){
         Frame frame = arFragment.getArSceneView().getArFrame(); //gets the current frame (basically a screenshot of AR experience)
 
         //this gets all the augmented images that have been added to the database
-        Collection<AugmentedImage> augmentedImages =frame.getUpdatedTrackables(AugmentedImage.class);
+        Collection<AugmentedImage> augmentedImages = frame.getUpdatedTrackables(AugmentedImage.class);
+
         // Get instance of Vibrator from current Context
         Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         //goes through entire image DB and check if any images have bee detected
         for (AugmentedImage augmentedImage : augmentedImages){ //for each image aug image in augDB
-            if (augmentedImage.getTrackingState() == TrackingState.TRACKING){ //if aug img is being tracked
+            if (augmentedImage.getTrackingState() == TrackingState.TRACKING){ //if aug img is being tracked, then check condition
                 if (augmentedImage.getName().equals("bowl") && addBowlModel == true){ //if img being tracked has name bowl and bool "addBowlmodel" is true
 
                     // Vibrate for 400 milliseconds
                     v.vibrate(400);
                     //hide the playButton
                     playButton.hide();
-                    //showBowlInfoBt = true;
 
                     infoButtonFloatingB.show();
+                    middle_text.setVisibility(View.VISIBLE);
+                    middle_textB.setVisibility(View.VISIBLE);
+
+                    middle_text.setText("This is the North Devon Chafing Fish!");
+                    middle_textB.setText("Click the info button bellow to find out more about this artifact");
+
+                    middle_text.postDelayed(new Runnable() {
+                        public void run() {
+                            middle_text.setVisibility(View.GONE);
+                            middle_textB.setVisibility(View.GONE);
+
+                        }
+                    }, 10000);
 
                     //on click listener set floating info button to the moreInfoBowl method from down below
                     infoButtonFloatingB.setOnClickListener(new View.OnClickListener() {
@@ -194,11 +142,10 @@ public class DisplayARCamera extends AppCompatActivity {
                         }
                     });
 
-                    //pauseButton.hide();
-                    Toast toast = Toast.makeText(this, "Click the button to find out more", Toast.LENGTH_LONG);
-                    toast.setGravity(Gravity.CENTER, 0, 0);
-                    toast.show();
+
                     Log.i("Here", "bowl has been detected, and sets addmodel to true");
+
+                    //add sfb model
                     createModel(arFragment, augmentedImage.createAnchor //then place 3D model ontop of image
                                     (augmentedImage.getCenterPose()), //creates anchor in centre of detected image
                             Uri.parse("model_899146844314.sfb"), 270); // model of bowl.sfb)
@@ -243,6 +190,24 @@ public class DisplayARCamera extends AppCompatActivity {
                             Uri.parse("red_postbox.sfb"), 0); // model of UKpostbox.sfb)
 
                     addPostBox = false;
+                }
+
+                //For Eamon dev image
+                if (augmentedImage.getName().equals("eamon") && addEamon == true) { //if img being tracked has name proclamation and bool "addprocaudio" is true
+                    // Vibrate for 400 milliseconds
+                    v.vibrate(400);
+                    Toast.makeText(this, "Emaon dev detected, clikc info to find out more!", Toast.LENGTH_LONG).show();
+                    infoButtonFloatingB.show();
+
+                    //on click listener set floating info button to the moreInfoPP method from down below
+                    infoButtonFloatingB.setOnClickListener(new View.OnClickListener() {
+                        public void onClick(View view) {
+                            eamonVideo();
+                        }
+                    });
+
+
+                    addEamon = false;
                 }
             }
         }
@@ -309,5 +274,13 @@ public class DisplayARCamera extends AppCompatActivity {
         Intent startMoreInfo = new Intent(this, more_info_bowl.class);
         startActivity(startMoreInfo);
     }
+
+    public void eamonVideo() {
+        Log.i("Here", "Inside the eamon video");
+        Intent startEamonPage = new Intent(this, eamonDev.class);
+        startActivity(startEamonPage);
+    }
+
+
 
 }

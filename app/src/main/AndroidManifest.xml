@@ -3,7 +3,7 @@
     package="com.example.fyp">
 
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <uses-feature
         android:name="android.hardware.camera.ar"
@@ -16,6 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".eamonDev"></activity>
         <activity
             android:name=".postbox_more_info"
             android:label="@string/title_activity_postbox_more_info"

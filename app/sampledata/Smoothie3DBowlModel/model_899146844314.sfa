@@ -42,7 +42,7 @@
       file: "sampledata/Smoothie3DBowlModel/model_899146844314.obj",
       name: "model_899146844314",
       recenter: "root",
-      scale: 0.65,
+      scale: 0.7,
 
    },
    samplers: [

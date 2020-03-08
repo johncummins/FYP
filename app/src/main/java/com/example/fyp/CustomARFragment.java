@@ -10,13 +10,18 @@ public class CustomARFragment extends ArFragment {
     @Override
     protected Config getSessionConfiguration(Session session) {
 
+        //gtes rid of promt to tell user to move phone around
         getPlaneDiscoveryController().setInstructionView(null);
 
         Config config = new Config(session);
         config.setUpdateMode(Config.UpdateMode.LATEST_CAMERA_IMAGE);
-        session.configure(config);
+        //session.configure(config);
+
+        DisplayARCamera arActivity = (DisplayARCamera) getActivity();
+        arActivity.setupAugmentedImgDb(config, session);
         this.getArSceneView().setupSession(session);
 
+        /*
         if(((DisplayARCamera)getActivity()).setupAugmentedImgDb(config, session)){
             Log.d("setupAugmentedImgDb", "Successfully setup database");
         }
@@ -25,6 +30,8 @@ public class CustomARFragment extends ArFragment {
             Log.e("setupAugmentedImgDb", "Failed to setup database");
         }
 
+
+         */
 
         return config;
 
