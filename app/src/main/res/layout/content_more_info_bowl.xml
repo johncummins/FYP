@@ -12,16 +12,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginTop="30dp"
-        android:text="@string/large_text"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="18sp"
-        android:id="@+id/bowl_text"/>
+
+        <TextView
+            android:id="@+id/bowl_textBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:text="Date: 1600s\nLocation: North Devon\n"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/bowl_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:text="@string/large_text"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp"
+            android:layout_below="@+id/bowl_textBold"/>
 
         <ImageView
             android:layout_width="match_parent"

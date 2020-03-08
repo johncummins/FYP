@@ -1,5 +1,6 @@
 package com.example.fyp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -38,6 +39,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.os.Vibrator;
 
 
 import java.io.IOError;
@@ -73,7 +75,6 @@ public class DisplayARCamera extends AppCompatActivity {
         playButton.hide();
         pauseButton.hide();
         infoButtonFloatingB.hide();
-
 
         Toolbar myToolbar = findViewById(R.id.toolbarARCamera);
         setSupportActionBar(myToolbar);
@@ -170,11 +171,17 @@ public class DisplayARCamera extends AppCompatActivity {
 
         //this gets all the augmented images that have been added to the database
         Collection<AugmentedImage> augmentedImages =frame.getUpdatedTrackables(AugmentedImage.class);
+        // Get instance of Vibrator from current Context
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         //goes through entire image DB and check if any images have bee detected
         for (AugmentedImage augmentedImage : augmentedImages){ //for each image aug image in augDB
             if (augmentedImage.getTrackingState() == TrackingState.TRACKING){ //if aug img is being tracked
                 if (augmentedImage.getName().equals("bowl") && addBowlModel == true){ //if img being tracked has name bowl and bool "addBowlmodel" is true
+
+                    // Vibrate for 400 milliseconds
+                    v.vibrate(400);
+                    //hide the playButton
                     playButton.hide();
                     //showBowlInfoBt = true;
 
@@ -194,7 +201,7 @@ public class DisplayARCamera extends AppCompatActivity {
                     Log.i("Here", "bowl has been detected, and sets addmodel to true");
                     createModel(arFragment, augmentedImage.createAnchor //then place 3D model ontop of image
                                     (augmentedImage.getCenterPose()), //creates anchor in centre of detected image
-                            Uri.parse("model_899146844314.sfb")); // model of bowl.sfb)
+                            Uri.parse("model_899146844314.sfb"), 270); // model of bowl.sfb)
                     addBowlModel = false; //this ensures model is only added once
 
                 }
@@ -203,6 +210,8 @@ public class DisplayARCamera extends AppCompatActivity {
 
                 //For proclamation image
                 if (augmentedImage.getName().equals("proclamation") && addProcAdudio == true) { //if img being tracked has name proclamation and bool "addprocaudio" is true
+                    // Vibrate for 400 milliseconds
+                    v.vibrate(400);
                     Toast.makeText(this, "Audio file detected, press play to listen!", Toast.LENGTH_LONG).show();
                     playButton.show();
                     infoButtonFloatingB.hide();
@@ -212,6 +221,8 @@ public class DisplayARCamera extends AppCompatActivity {
 
                 //For postbox image
                 if (augmentedImage.getName().equals("postbox")&& addPostBox ==true) { //if img being tracked has name proclamation and bool "addprocaudio" is true
+                    // Vibrate for 400 milliseconds
+                    v.vibrate(400);
                     //showPostBoxInfoBt = true;//if statment for the info button, brings user to more_info_bowl.class
                     playButton.hide();
                     infoButtonFloatingB.show();
@@ -229,7 +240,7 @@ public class DisplayARCamera extends AppCompatActivity {
                     Log.i("Here", "postBox has been detected, and sets addPostbox to true");
                     createModel(arFragment, augmentedImage.createAnchor //then place 3D model ontop of image
                                     (augmentedImage.getCenterPose()), //creates anchor in centre of detected image
-                            Uri.parse("red_postbox.sfb")); // model of UKpostbox.sfb)
+                            Uri.parse("red_postbox.sfb"), 0); // model of UKpostbox.sfb)
 
                     addPostBox = false;
                 }
@@ -253,11 +264,11 @@ public class DisplayARCamera extends AppCompatActivity {
     }
 
 
-    private void createModel(ArFragment fragment, Anchor anchor, Uri model){ //builds the model
+    private void createModel(ArFragment fragment, Anchor anchor, Uri model, int x){ //builds the model
         ModelRenderable.builder()
                 .setSource(fragment.getContext(), model)
                 .build()
-                .thenAccept(renderable -> addNodeToScene(fragment, anchor, renderable))
+                .thenAccept(renderable -> addNodeToScene(fragment, anchor, renderable, x))
                 .exceptionally((throwable -> { AlertDialog.Builder builder = new AlertDialog.Builder(this);
                     builder.setMessage(throwable.getMessage()).setTitle("An Error has occurred - see below for details");
                     AlertDialog dialog = builder.create();
@@ -267,12 +278,16 @@ public class DisplayARCamera extends AppCompatActivity {
 
     }
 
-    private void addNodeToScene(ArFragment fragment, Anchor anchor, Renderable renderable){
+    private void addNodeToScene(ArFragment fragment, Anchor anchor, Renderable renderable, int x){
+        //change the int to string, then add the f to the string then make it float, in order to rotate bowl on y axis
+        String intX = Integer.toString(x);
+        String yValue = intX + "f";
+        Float yVal =  Float.parseFloat(yValue);
+
         AnchorNode anchorNode = new AnchorNode(anchor); //creates a basic node, in fixed position, cant be moved or interacted with
         TransformableNode node = new TransformableNode(fragment.getTransformationSystem()); //can scale, rotate and move this node
-        node.setLocalRotation(Quaternion.axisAngle(new Vector3(1f, 0, 0), 0f)); //rotates the node 270 degrees in y axis (x,y,z), as bowl useed to be upside down - changed to 0f for when on table
+        node.setLocalRotation(Quaternion.axisAngle(new Vector3(1f, 0, 0), yVal)); //rotates the node 270 degrees in y axis (x,y,z), as bowl useed to be upside down - changed to 0f for when on table
         node.setRenderable(renderable);
-        //node.setLight(LightingColorFilter);
 
         node.setParent(anchorNode); //setting parent of transformable node as anchor
         fragment.getArSceneView().getScene().addChild(anchorNode); // added anchor to scene(adds both transformable and anchor to scene)

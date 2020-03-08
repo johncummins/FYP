@@ -49,7 +49,7 @@ public class HomeActivity extends AppCompatActivity {
     public void showTrivia (View view){
         Log.i("Trivia button pressed", "trivia class is called");
 
-        Intent startQ = new Intent(this, Trivia.class );
+        Intent startQ = new Intent(this, Start_quiz.class );
         startActivity(startQ);
     }
 
