@@ -9,13 +9,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.fyp.EventsTab;
-import com.example.fyp.ExploreTab;
-import com.example.fyp.FirstFloor;
-import com.example.fyp.GalleryTab;
-import com.example.fyp.GroundFloor;
 import com.example.fyp.HomeTab;
+import com.example.fyp.GalleryTab;
+import com.example.fyp.AboutTab;
 import com.example.fyp.R;
-import com.example.fyp.SecondFloor;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -24,7 +21,7 @@ import com.example.fyp.SecondFloor;
 public class SectionsPagerAdapter_home extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_home, R.string.tab_text_explore, R.string.tab_text_events, R.string.tab_text_gallery, };
+    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_home, R.string.tab_text_about, R.string.tab_text_events };
     private final Context mContext;
 
     public SectionsPagerAdapter_home(Context context, FragmentManager fm) {
@@ -43,13 +40,10 @@ public class SectionsPagerAdapter_home extends FragmentPagerAdapter {
                 fragment = new HomeTab();
                 break;
             case 1:
-                fragment = new ExploreTab();
+                fragment = new AboutTab();
                 break;
             case 2:
                 fragment = new EventsTab();
-                break;
-            case 3:
-                fragment = new GalleryTab();
                 break;
         }
 
