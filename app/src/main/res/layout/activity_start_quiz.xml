@@ -15,6 +15,7 @@
         android:layout_marginTop="450dp"
         android:onClick="enterQuiz"
         android:text="Start"
+        android:backgroundTint="@color/colorGold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +34,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        android:textColor="#000000"
+        android:textColor="@color/colorGold"
         android:textStyle="bold"/>
 
 
@@ -43,11 +44,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
-        android:layout_marginBottom="80dp"
-        android:text="Take the quiz to see how much information you took in from around the museum"
+        android:layout_marginBottom="70dp"
+        android:text="Take the Easter Rising quiz to see how much information you took in from around the museum!"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/startButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:textColor="@color/colorBlack"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

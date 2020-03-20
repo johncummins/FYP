@@ -54,7 +54,8 @@ public class DisplayARCamera extends AppCompatActivity {
     boolean addProcAdudio = true;
     boolean addPostBox = true;
     boolean addEamon = true;
-    private TextView middle_text, middle_textB;
+    private TextView middle_textA, middle_textB, info_text_pop;
+    private Button ButtonB;
 
 
     private MediaPlayer mediaPlayer;
@@ -69,18 +70,22 @@ public class DisplayARCamera extends AppCompatActivity {
         assert arFragment != null;
         arFragment.getPlaneDiscoveryController().hide(); //hides the hand that moves at the start of AR session
         arFragment.getArSceneView().getScene().addOnUpdateListener(this::onUpdateFrame); // everytime sceneview is updated the func onupdateframe will be called
-        mediaPlayer = MediaPlayer.create(this, R.raw.proclamation_audio);
+        mediaPlayer = MediaPlayer.create(this, R.raw.proclamation_audio_1);
         playButton = findViewById(R.id.play);
         pauseButton = findViewById(R.id.pause);
         infoButtonFloatingB  = findViewById(R.id.infoButtonFloatingB);
-        middle_text = findViewById(R.id.middle_text);
+        middle_textA = findViewById(R.id.middle_text);
         middle_textB = findViewById(R.id.middle_textB);
+        ButtonB = findViewById(R.id.ButtonB);
+        info_text_pop = findViewById(R.id.info_text_pop);
 
         playButton.hide();
         pauseButton.hide();
         infoButtonFloatingB.hide();
-        middle_text.setVisibility(View.INVISIBLE);
+        middle_textA.setVisibility(View.INVISIBLE);
         middle_textB.setVisibility(View.INVISIBLE);
+        ButtonB.setVisibility(View.INVISIBLE);
+        info_text_pop.setVisibility(View.INVISIBLE);
 
         Toolbar myToolbar = findViewById(R.id.toolbarARCamera);
         setSupportActionBar(myToolbar);
@@ -113,27 +118,43 @@ public class DisplayARCamera extends AppCompatActivity {
         //goes through entire image DB and check if any images have bee detected
         for (AugmentedImage augmentedImage : augmentedImages){ //for each image aug image in augDB
             if (augmentedImage.getTrackingState() == TrackingState.TRACKING){ //if aug img is being tracked, then check condition
-                if (augmentedImage.getName().equals("bowl") && addBowlModel == true){ //if img being tracked has name bowl and bool "addBowlmodel" is true
 
+        //BOWL
+                if (augmentedImage.getName().equals("bowl") && addBowlModel == true){ //if img being tracked has name bowl and bool "addBowlmodel" is true
                     // Vibrate for 400 milliseconds
                     v.vibrate(400);
                     //hide the playButton
                     playButton.hide();
+                    middle_textA.setVisibility(View.VISIBLE);
+                    ButtonB.setVisibility(View.VISIBLE);
+                    middle_textA.setText("This is the North Devon Chafing Fish!");
+                    ButtonB.setText("Click here to view 3D model");
 
-                    infoButtonFloatingB.show();
-                    middle_text.setVisibility(View.VISIBLE);
-                    middle_textB.setVisibility(View.VISIBLE);
-
-                    middle_text.setText("This is the North Devon Chafing Fish!");
-                    middle_textB.setText("Click the info button bellow to find out more about this artifact");
-
-                    middle_text.postDelayed(new Runnable() {
+                    middle_textA.postDelayed(new Runnable() {
                         public void run() {
-                            middle_text.setVisibility(View.GONE);
-                            middle_textB.setVisibility(View.GONE);
-
+                            middle_textA.setVisibility(View.GONE);
                         }
-                    }, 10000);
+                    }, 7000);
+
+                    Log.i("Here", "bowl has been detected, and sets addmodel to true");
+
+                    //on click listener set for the buttonB, so the user can click and button change colour
+                    ButtonB.setOnClickListener(new View.OnClickListener() {
+                        public void onClick(View view) {
+                            //add sfb model
+                            ButtonB.setVisibility(View.GONE);
+                            createModel(arFragment, augmentedImage.createAnchor //then place 3D model ontop of image
+                                            (augmentedImage.getCenterPose()), //creates anchor in centre of detected image
+                                    Uri.parse("model_899146844314.sfb"), 270); // model of bowl.sfb)
+                            info_text_pop.setVisibility(View.VISIBLE);
+                            info_text_pop.postDelayed(new Runnable() {
+                                public void run() {
+                                    info_text_pop.setVisibility(View.GONE);
+                                }
+                            }, 10000);
+                            infoButtonFloatingB.show();
+                        }
+                    });
 
                     //on click listener set floating info button to the moreInfoBowl method from down below
                     infoButtonFloatingB.setOnClickListener(new View.OnClickListener() {
@@ -141,72 +162,95 @@ public class DisplayARCamera extends AppCompatActivity {
                             moreInfoBowl();
                         }
                     });
-
-
-                    Log.i("Here", "bowl has been detected, and sets addmodel to true");
-
-                    //add sfb model
-                    createModel(arFragment, augmentedImage.createAnchor //then place 3D model ontop of image
-                                    (augmentedImage.getCenterPose()), //creates anchor in centre of detected image
-                            Uri.parse("model_899146844314.sfb"), 270); // model of bowl.sfb)
                     addBowlModel = false; //this ensures model is only added once
-
                 }
 
-                //augmentedImage.getName().equals("proclamation1") // can be added in below if i want two proclamtion pictures
-
-                //For proclamation image
+        //PROCLAMATION
                 if (augmentedImage.getName().equals("proclamation") && addProcAdudio == true) { //if img being tracked has name proclamation and bool "addprocaudio" is true
                     // Vibrate for 400 milliseconds
                     v.vibrate(400);
-                    Toast.makeText(this, "Audio file detected, press play to listen!", Toast.LENGTH_LONG).show();
-                    playButton.show();
+
+                    middle_textA.setText("This is a copy of Proclamation of the Irish Republic");
+                    middle_textB.setText("Click the play button to hear the proclamation read by relatives of the Easter rising");
+
+                    middle_textA.postDelayed(new Runnable() {
+                        public void run() {
+                            middle_textA.setVisibility(View.GONE);
+                        }
+                    }, 10000);
+
                     infoButtonFloatingB.hide();
+                    playButton.show();
                     Log.i("Here", "Proclamtion has been detected, and sets addmodel to true");
                     addProcAdudio = false;
                 }
 
-                //For postbox image
+       //POSTBOX
                 if (augmentedImage.getName().equals("postbox")&& addPostBox ==true) { //if img being tracked has name proclamation and bool "addprocaudio" is true
                     // Vibrate for 400 milliseconds
                     v.vibrate(400);
                     //showPostBoxInfoBt = true;//if statment for the info button, brings user to more_info_bowl.class
                     playButton.hide();
-                    infoButtonFloatingB.show();
+                    middle_textA.setVisibility(View.VISIBLE);
+                    ButtonB.setVisibility(View.VISIBLE);
+                    middle_textA.setText("This is the Penfold Postbox");
+                    ButtonB.setText("Click here to see how this postbox looked before Ireland got its independence");
+                    ButtonB.setTextSize(14);
 
+                    middle_textA.postDelayed(new Runnable() {
+                        public void run() {
+                            middle_textA.setVisibility(View.GONE);
+                        }
+                    }, 7000);
+
+                    //on click listener set for the buttonB, so the user can click and button change colour
+                    ButtonB.setOnClickListener(new View.OnClickListener() {
+                        public void onClick(View view) {
+                            ButtonB.setVisibility(View.GONE);
+                            createModel(arFragment, augmentedImage.createAnchor //then place 3D model ontop of image
+                                            (augmentedImage.getCenterPose()), //creates anchor in centre of detected image
+                                    Uri.parse("red_postbox.sfb"), 0); // model of red_postbox.sfb)
+                            ButtonB.postDelayed(new Runnable() {
+                                public void run() {
+                                    info_text_pop.setVisibility(View.VISIBLE);
+                                }
+                            }, 7000);
+                            infoButtonFloatingB.show();
+                        }
+                    });
                     //on click listener set floating info button to the moreInfoPP method from down below
                     infoButtonFloatingB.setOnClickListener(new View.OnClickListener() {
                         public void onClick(View view) {
                             moreInfoPP();
                         }
                     });
-                    Toast toast1 = Toast.makeText(this, "Penfold Pillar Box detected Click to find out more!", Toast.LENGTH_LONG);
-                    toast1.setGravity(Gravity.CENTER, 0, 0);
-                    toast1.show();
-
-                    Log.i("Here", "postBox has been detected, and sets addPostbox to true");
-                    createModel(arFragment, augmentedImage.createAnchor //then place 3D model ontop of image
-                                    (augmentedImage.getCenterPose()), //creates anchor in centre of detected image
-                            Uri.parse("red_postbox.sfb"), 0); // model of UKpostbox.sfb)
-
                     addPostBox = false;
                 }
 
-                //For Eamon dev image
+      //EAMON DEV
                 if (augmentedImage.getName().equals("eamon") && addEamon == true) { //if img being tracked has name proclamation and bool "addprocaudio" is true
                     // Vibrate for 400 milliseconds
                     v.vibrate(400);
-                    Toast.makeText(this, "Emaon dev detected, clikc info to find out more!", Toast.LENGTH_LONG).show();
-                    infoButtonFloatingB.show();
+
+                    OnScreenButtonsVisible();
+                    middle_textA.setText("This is a statue of Éamon de Valera!");
+                    middle_textB.setText("Click the play button below to see videos of Éamon de Valera");
+
+                    middle_textA.postDelayed(new Runnable() {
+                        public void run() {
+                            OnScreenButtonsGone();
+                        }
+                    }, 10000);
+
+                    playButton.show();
 
                     //on click listener set floating info button to the moreInfoPP method from down below
-                    infoButtonFloatingB.setOnClickListener(new View.OnClickListener() {
+                    playButton.setOnClickListener(new View.OnClickListener() {
                         public void onClick(View view) {
+                            middle_textB.setVisibility(View.GONE);
                             eamonVideo();
                         }
                     });
-
-
                     addEamon = false;
                 }
             }
@@ -215,6 +259,7 @@ public class DisplayARCamera extends AppCompatActivity {
     }
 
     public void playAudio(View view){
+        middle_textB.setVisibility(View.GONE);
         Log.i("Here: play button pressed", "audio will play now");
         mediaPlayer.start();
         pauseButton.show();
@@ -281,6 +326,15 @@ public class DisplayARCamera extends AppCompatActivity {
         startActivity(startEamonPage);
     }
 
+    public void OnScreenButtonsVisible(){
+        middle_textA.setVisibility(View.VISIBLE);
+        middle_textB.setVisibility(View.VISIBLE);
+    }
+
+    public void OnScreenButtonsGone(){
+        middle_textA.setVisibility(View.GONE);
+        middle_textB.setVisibility(View.GONE);
+    }
 
 
 }

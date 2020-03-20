@@ -60,9 +60,26 @@ Galway, however, didn’t engage in the wholesale “cleansing of Britishness”
     </string>
 
     <string name="welcome_message">
-        "Galway City Museum has three floors of exciting exhibitions engaging visitors in the archaeology, history and sea science of Galway. The attraction is one of Galway’s most popular cultural hotspots and welcomes over 200,000 visitors per year. \n\nThe Museum has been a recipient of TripAdvisor’s Certificate of Excellence for five years running and the 2016 Expert’s Choice award, ranking it among the ‘highest rated attractions in Galway’."
+        "Galway City Museum has three floors of exciting exhibitions engaging visitors in the archaeology, history and sea science of Galway. The attraction is one of Galway’s most popular cultural hotspots and welcomes over 200,000 visitors per year."
     </string>
 
+    <string name="CurrentExhibitions">
+        "-  Prehistoric Galway\n-  Medieval Galway\n-  Pádraic Ó Conaire\n-  Revolution\n-  The Galway Hooker\n-  Sea Science\n-  Keepers of the Gael"
+    </string>
+
+    <string name = "home0">
+        "Welcome to the Galway City Museum app"
+    </string>
+
+    <string name = "home1">
+        "App features:"
+    </string>
+    <string name="home2">
+        "\nRetrieve extra content on artefacts from around the museum, including videos, audio clips and render 3D models in the real world\n\n\nFind where to go next in the museum by looking through the floor plan.\n\n\nFind out about up coming events in the museum.\n\n\nOnce you’re finished the tour of the museum, take a quiz to see how much you’ve taken in!
+    </string>
+    <string name="home3">
+        "AR Mode:\n\n\n\n\nMaps:\n\n\n\nEvents:\n\n\n\nTrivia:"
+    </string>
 
 
 

@@ -64,10 +64,11 @@
         android:background="@drawable/rounded_corners_black"
         android:text="Here si sthe sample text that goes here"
         android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="22dp"
+        android:textColor="#000000"
+        android:textSize="20dp"
         android:textStyle="bold"
-        android:padding="4dp"/>
+        android:padding="4dp"
+        android:backgroundTint="@color/blue2"/>
 
     <TextView
         android:id="@+id/middle_textB"
@@ -78,8 +79,41 @@
         android:background="@drawable/rounded_corners_black"
         android:text="Here si sthe sample text that goes here"
         android:textAlignment="center"
-        android:textColor="@color/blue2"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        android:padding="3.5dp"
+        android:backgroundTint="@color/blue2"/>
+
+
+    <Button
+        android:id="@+id/ButtonB"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/rounded_corners"
+        android:text="Here si sthe sample text that goes here"
+        android:textAlignment="center"
+        android:textColor="#000000"
         android:textSize="18dp"
+        android:padding="4dp"
+        android:textAllCaps="false"
+        android:clickable="true"
+        android:focusable="true"/>
+
+
+    <TextView
+        android:id="@+id/info_text_pop"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="18dp"
+        android:background="@drawable/rounded_corners_black"
+        android:text="Click here to find out more about this artifact ->"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="14dp"
         android:padding="3.5dp"/>
+
 
 </FrameLayout>

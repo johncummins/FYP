@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -22,7 +20,7 @@
         android:layout_marginTop="100dp"
         android:text="About the Museum"
         android:textColor="#FFC107"
-        android:textSize="30sp">
+        android:textSize="24sp">
 
     </TextView>
 
@@ -32,12 +30,78 @@
             android:text="@string/welcome_message"
             android:layout_below="@+id/welcome"
             android:id="@+id/welcome_par"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="4dp">
         </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current Exhibitions:"
+        android:layout_below="@+id/welcome_par"
+        android:id="@+id/currentH"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:textColor="@color/colorGold"
+        android:textSize="24sp"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/CurrentExhibitions"
+        android:layout_below="@+id/currentH"
+        android:id="@+id/current"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:layout_marginTop="1dp"
+        android:layout_centerHorizontal="true">
+    </TextView>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/current"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/home1"
+        android:id="@+id/h1"
+        android:textColor="@color/colorGold"
+        android:textSize="24sp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp">
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/h2"
+        android:text="@string/home2"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:layout_below="@id/h1"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp">
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/home3"
+        android:textColor="@color/colorGold"
+        android:textSize="18sp"
+        android:layout_below="@id/h1"
+        android:layout_marginStart="30dp"
+        android:id="@+id/h3">
+    </TextView>
 
         <TextView
             android:id="@+id/heading"
@@ -45,10 +109,10 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="Opening Hours:"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/colorGold"
             android:textStyle="bold"
             android:translationZ="10dp"
-            android:layout_below="@+id/welcome_par"
+            android:layout_below="@+id/h2"
             android:layout_marginTop="30dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
@@ -62,7 +126,7 @@
             android:layout_below="@+id/heading"
             android:layout_centerInParent="true"
             android:id="@+id/first_rel"
-            android:layout_marginBottom="80dp">
+            android:layout_marginBottom="60dp">
 
         <TextView
             android:id="@+id/days"
@@ -91,10 +155,9 @@
             android:paddingEnd="50dp"
             android:paddingTop="10dp"
             android:textSize="16sp"
-            android:layout_marginBottom="120dp">
+            android:layout_marginBottom="60dp">
 
         </TextView>
-
         </RelativeLayout>
 
 </RelativeLayout>

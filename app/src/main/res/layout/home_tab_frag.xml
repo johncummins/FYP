@@ -1,36 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
     android:layout_marginTop="80dp">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_centerHorizontal="true"
-        android:text="Welcome to Galway City Museum"
-        android:id="@+id/heading"
-        android:textStyle="bold"
-        android:textColor="#FFC107"
-        android:textSize="30sp"
-        android:gravity="center">
-    </TextView>
+        android:layout_marginTop="120dp"
+        android:id="@+id/rel1Home">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_centerHorizontal="true"
-        android:text="Explore the museum while using our app:\nEnter Ar Mode by clicking the blue button below\n    -Retrieve extra content on artifacts, icuding videos, audio clips and 3D models"
-        android:id="@+id/h1"
-        android:textColor="#000000"
-        android:textSize="30sp"
-        android:gravity="center"
-        android:layout_below="@id/heading">
-    </TextView>
 
-</RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/home0"
+            android:id="@+id/welcomeNew"
+            android:textColor="#FFC107"
+            android:textSize="35sp"
+            android:gravity="center">
+        </TextView>
+
+
+
+    </RelativeLayout>
+</ScrollView>
