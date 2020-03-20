@@ -8,10 +8,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager ;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.fyp.FirstFloor;
-import com.example.fyp.GroundFloor;
+import com.example.fyp.FirstFloorFragment;
+import com.example.fyp.GroundFloorFragment;
 import com.example.fyp.R;
-import com.example.fyp.SecondFloor;
+import com.example.fyp.SecondFloorFragment;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -36,13 +36,13 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         Fragment fragment = null;
         switch(position) {
             case 0:
-                fragment = new GroundFloor();
+                fragment = new GroundFloorFragment();
                 break;
             case 1:
-                fragment = new FirstFloor();
+                fragment = new FirstFloorFragment();
                 break;
             case 2:
-                fragment = new SecondFloor();
+                fragment = new SecondFloorFragment();
                 break;
         }
                 return fragment;

@@ -7,14 +7,14 @@ import android.os.Bundle;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
-public class eamonDev extends AppCompatActivity {
+public class VideoActivity extends AppCompatActivity {
 
     VideoView videoView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_eamon_dev);
+        setContentView(R.layout.activity_video);
 
         videoView = findViewById(R.id.videoView1);
         String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.eamon_video;

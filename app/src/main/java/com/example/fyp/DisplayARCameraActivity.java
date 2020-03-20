@@ -2,9 +2,6 @@ package com.example.fyp;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.LightingColorFilter;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -23,7 +20,6 @@ import com.google.ar.sceneform.math.Quaternion;
 import com.google.ar.sceneform.math.Vector3;
 import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.rendering.Renderable;
-import com.google.ar.sceneform.rendering.ViewRenderable;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
 
@@ -31,23 +27,18 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.provider.MediaStore;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.os.Vibrator;
 
 
-import java.io.IOError;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
 
-public class DisplayARCamera extends AppCompatActivity {
+public class DisplayARCameraActivity extends AppCompatActivity {
 
     private CustomARFragment arFragment;
     boolean addBowlModel = true;
@@ -189,7 +180,7 @@ public class DisplayARCamera extends AppCompatActivity {
                 if (augmentedImage.getName().equals("postbox")&& addPostBox ==true) { //if img being tracked has name proclamation and bool "addprocaudio" is true
                     // Vibrate for 400 milliseconds
                     v.vibrate(400);
-                    //showPostBoxInfoBt = true;//if statment for the info button, brings user to more_info_bowl.class
+                    //showPostBoxInfoBt = true;//if statment for the info button, brings user to BowlInfoActivity.class
                     playButton.hide();
                     middle_textA.setVisibility(View.VISIBLE);
                     ButtonB.setVisibility(View.VISIBLE);
@@ -308,7 +299,7 @@ public class DisplayARCamera extends AppCompatActivity {
     public void moreInfoPP(){
         //infoButtonPP.setVisibility(View.INVISIBLE);
         Log.i("Here", "Inside the startmoreInfopp, postbox one");
-        Intent startMoreInfoPP = new Intent(this, postbox_more_info.class);
+        Intent startMoreInfoPP = new Intent(this, PostboxInfoActivity.class);
         startActivity(startMoreInfoPP);
 
     }
@@ -316,13 +307,13 @@ public class DisplayARCamera extends AppCompatActivity {
     public void moreInfoBowl() {
         //infoButtonB.setVisibility(View.INVISIBLE);
         Log.i("Here", "Inside the startmoreinfo, bowl one");
-        Intent startMoreInfo = new Intent(this, more_info_bowl.class);
+        Intent startMoreInfo = new Intent(this, BowlInfoActivity.class);
         startActivity(startMoreInfo);
     }
 
     public void eamonVideo() {
         Log.i("Here", "Inside the eamon video");
-        Intent startEamonPage = new Intent(this, eamonDev.class);
+        Intent startEamonPage = new Intent(this, VideoActivity.class);
         startActivity(startEamonPage);
     }
 

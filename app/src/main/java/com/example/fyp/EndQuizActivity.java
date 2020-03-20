@@ -7,10 +7,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Chronometer;
 import android.widget.TextView;
 
-public class end_of_quiz extends AppCompatActivity {
+public class EndQuizActivity extends AppCompatActivity {
 
     Button restartButton;
     TextView yourScore, yourTime;
@@ -18,7 +17,7 @@ public class end_of_quiz extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_end_of_quiz);
+        setContentView(R.layout.activity_end_quiz);
         restartButton = findViewById(R.id.Restart);
         yourTime = findViewById(R.id.yourTime);
         yourScore = findViewById(R.id.yourScore);
@@ -32,7 +31,7 @@ public class end_of_quiz extends AppCompatActivity {
 
     public void restartQuiz(View view){
         Log.i("Quiz button pressed", "quiz class is called, re start****");
-        Intent startQ = new Intent(this, Trivia.class );
+        Intent startQ = new Intent(this, TriviaActivity.class );
         startActivity(startQ);
 
     }

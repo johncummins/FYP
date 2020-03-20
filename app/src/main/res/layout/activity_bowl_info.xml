@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".postbox_more_info">
+    tools:context=".BowlInfoActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -25,6 +25,7 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
 
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
@@ -36,6 +37,11 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_postbox_more_info" />
+    <include
+        android:id="@+id/include"
+        layout="@layout/content_more_info_bowl"
+        app:layout_anchor="@+id/include"
+        app:layout_anchorGravity="top|center" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

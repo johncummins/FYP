@@ -1,17 +1,13 @@
 package com.example.fyp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
 
-import com.example.fyp.ui.main.SectionsPagerAdapter;
 import com.example.fyp.ui.main.SectionsPagerAdapter_home;
 import com.google.android.material.tabs.TabLayout;
 
@@ -20,13 +16,13 @@ public class HomeActivity extends AppCompatActivity {
 
     public void arCamera (View view){
         Log.i("Button pressed", "AR button has been pressed");
-        Intent startARCamera = new Intent(this, DisplayARCamera.class );
+        Intent startARCamera = new Intent(this, DisplayARCameraActivity.class );
         startActivity(startARCamera);
     }
 
     public void showMaps (View view){
-        Log.i("Maps button pressed", "Maps class is called");
-        Intent startMaps = new Intent(this, Maps.class );
+        Log.i("FloorPlanActivity button pressed", "FloorPlanActivity class is called");
+        Intent startMaps = new Intent(this, FloorPlanActivity.class );
         startActivity(startMaps);
     }
 
@@ -46,8 +42,8 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void showTrivia (View view){
-        Log.i("Trivia button pressed", "trivia class is called");
-        Intent startQ = new Intent(this, Start_quiz.class );
+        Log.i("TriviaActivity button pressed", "trivia class is called");
+        Intent startQ = new Intent(this, StartQuizActivity.class );
         startActivity(startQ);
     }
 }

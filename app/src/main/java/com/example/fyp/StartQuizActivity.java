@@ -8,7 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-public class Start_quiz extends AppCompatActivity {
+public class StartQuizActivity extends AppCompatActivity {
 
     Button startButton;
 
@@ -19,13 +19,13 @@ public class Start_quiz extends AppCompatActivity {
         startButton = findViewById(R.id.startButton);
 
         //updates questions in trivia class
-        //Trivia triv = new Trivia();
+        //TriviaActivity triv = new TriviaActivity();
         //triv.updateQuestion();
     }
 
     public void enterQuiz(View view){
         Log.i("Quiz button pressed", "quiz class is called");
-        Intent startQ = new Intent(this, Trivia.class );
+        Intent startQ = new Intent(this, TriviaActivity.class );
         startActivity(startQ);
 
     }

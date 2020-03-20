@@ -16,15 +16,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".eamonDev"></activity>
+        <activity android:name=".VideoActivity"></activity>
         <activity
-            android:name=".postbox_more_info"
+            android:name=".PostboxInfoActivity"
             android:label="@string/title_activity_postbox_more_info"
-            android:parentActivityName=".DisplayARCamera"
+            android:parentActivityName=".DisplayARCameraActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.fyp.DisplayARCamera" />
+                android:value="com.example.fyp.DisplayARCameraActivity" />
         </activity>
 
         <meta-data
@@ -32,17 +32,17 @@
             android:resource="@drawable/gradient_2" />
 
         <activity
-            android:name=".more_info_bowl"
+            android:name=".BowlInfoActivity"
             android:label="@string/title_activity_more_info_bowl"
-            android:parentActivityName=".DisplayARCamera"
+            android:parentActivityName=".DisplayARCameraActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".end_of_quiz" />
-        <activity android:name=".Start_quiz" />
+        <activity android:name=".EndQuizActivity" />
+        <activity android:name=".StartQuizActivity" />
         <activity
-            android:name=".Trivia"
+            android:name=".TriviaActivity"
             android:parentActivityName=".HomeActivity" />
         <activity
-            android:name=".Maps"
+            android:name=".FloorPlanActivity"
             android:label="@string/title_activity_maps"
             android:parentActivityName=".HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -51,7 +51,7 @@
                 android:value="com.example.fyp.MainActivity" />
         </activity>
         <activity
-            android:name=".DisplayARCamera"
+            android:name=".DisplayARCameraActivity"
             android:label="@string/title_activity_display_arcamera"
             android:parentActivityName=".HomeActivity"
             android:theme="@style/AppTheme.NoActionBar" />

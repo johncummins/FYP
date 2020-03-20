@@ -8,10 +8,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.fyp.EventsTab;
-import com.example.fyp.HomeTab;
-import com.example.fyp.GalleryTab;
-import com.example.fyp.AboutTab;
+import com.example.fyp.EventsTabFragment;
+import com.example.fyp.HomeTabFragment;
+import com.example.fyp.AboutTabFragment;
 import com.example.fyp.R;
 
 /**
@@ -37,13 +36,13 @@ public class SectionsPagerAdapter_home extends FragmentPagerAdapter {
         Fragment fragment = null;
         switch(position) {
             case 0:
-                fragment = new HomeTab();
+                fragment = new HomeTabFragment();
                 break;
             case 1:
-                fragment = new AboutTab();
+                fragment = new AboutTabFragment();
                 break;
             case 2:
-                fragment = new EventsTab();
+                fragment = new EventsTabFragment();
                 break;
         }
 

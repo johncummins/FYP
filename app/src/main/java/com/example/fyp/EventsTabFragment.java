@@ -13,12 +13,12 @@ import android.widget.RelativeLayout;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class EventsTab extends Fragment {
+public class EventsTabFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.events_tab_frag, container, false);
+        View view = inflater.inflate(R.layout.fragment_events_tab, container, false);
 
         WebView webview;
         RelativeLayout bottomButtons = view.findViewById(R.id.BottomButtons);

@@ -9,10 +9,10 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 
-public class SecondFloor extends Fragment {
+public class FirstFloorFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.second_floor_frag, container, false);
+        return inflater.inflate(R.layout.fragment_first_floor, container, false);
     }
 }
