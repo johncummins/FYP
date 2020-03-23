@@ -64,25 +64,29 @@ public class TriviaActivity extends AppCompatActivity {
         //calls the timer function
         startChron();
 
+
         //button 1
         bt1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
                 if(bt1.getText().equals(answer)){
                     bt1.setBackgroundColor(GREEN);
-                    Toast.makeText(TriviaActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
                     correct++;
-                    updateQuestion();
-                    updateQuestionNum();
-                    updateScore();
                 }
                 else{
                     bt1.setBackgroundColor(RED);
-                    Toast.makeText(TriviaActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
-                    updateQuestion();
-                    updateQuestionNum();
-                    updateScore();
-
                 }
+
+                bt1.postDelayed(new Runnable() {
+                    public void run() {
+                        updateQuestion();
+                        updateQuestionNum();
+                        updateScore();
+                        bt1.setBackgroundColor(WHITE);
+                        bt2.setBackgroundColor(WHITE);
+                        bt3.setBackgroundColor(WHITE);
+                        bt4.setBackgroundColor(WHITE);
+                    }
+                }, 200);
             }
         });
 
@@ -91,20 +95,23 @@ public class TriviaActivity extends AppCompatActivity {
             public void onClick(View view){
                 if(bt2.getText().equals(answer)){
                     bt2.setBackgroundColor(GREEN);
-                    Toast.makeText(TriviaActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
                     correct++;
-                    updateQuestion();
-                    updateQuestionNum();
-                    updateScore();
+
                 }
                 else{
                     bt2.setBackgroundColor(RED);
-                    Toast.makeText(TriviaActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
-                    updateQuestion();
-                    updateQuestionNum();
-                    updateScore();
-
                 }
+                bt2.postDelayed(new Runnable() {
+                    public void run() {
+                        bt1.setBackgroundColor(WHITE);
+                        bt2.setBackgroundColor(WHITE);
+                        bt3.setBackgroundColor(WHITE);
+                        bt4.setBackgroundColor(WHITE);
+                        updateQuestion();
+                        updateQuestionNum();
+                        updateScore();
+                    }
+                }, 200);
             }
         });
 
@@ -113,21 +120,22 @@ public class TriviaActivity extends AppCompatActivity {
             public void onClick(View view){
                 if(bt3.getText().equals(answer)){
                     bt3.setBackgroundColor(GREEN);
-                    Toast.makeText(TriviaActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
                     correct++;
-                    updateQuestion();
-                    updateQuestionNum();
-                    updateScore();
-
                 }
                 else{
                     bt3.setBackgroundColor(RED);
-                    Toast.makeText(TriviaActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
-                    updateQuestion();
-                    updateQuestionNum();
-                    updateScore();
-
                 }
+                bt3.postDelayed(new Runnable() {
+                    public void run() {
+                        bt1.setBackgroundColor(WHITE);
+                        bt2.setBackgroundColor(WHITE);
+                        bt3.setBackgroundColor(WHITE);
+                        bt4.setBackgroundColor(WHITE);
+                        updateQuestion();
+                        updateQuestionNum();
+                        updateScore();
+                    }
+                }, 200);
             }
         });
 
@@ -136,21 +144,23 @@ public class TriviaActivity extends AppCompatActivity {
             public void onClick(View view){
                 if(bt4.getText().equals(answer)){
                     bt4.setBackgroundColor(GREEN);
-                    Toast.makeText(TriviaActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
                     correct++;
-                    updateQuestion();
-                    updateQuestionNum();
-                    updateScore();
+
                 }
                 else{
                     bt4.setBackgroundColor(RED);
-                    Toast.makeText(TriviaActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
-                    updateQuestion();
-                    updateQuestionNum();
-                    updateScore();
-
-
                 }
+                bt4.postDelayed(new Runnable() {
+                    public void run() {
+                        bt1.setBackgroundColor(WHITE);
+                        bt2.setBackgroundColor(WHITE);
+                        bt3.setBackgroundColor(WHITE);
+                        bt4.setBackgroundColor(WHITE);
+                        updateQuestion();
+                        updateQuestionNum();
+                        updateScore();
+                    }
+                }, 200);
             }
         });
 
