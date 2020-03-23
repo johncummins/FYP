@@ -31,11 +31,13 @@
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/blue2"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:navigationContentDescription="Back"
+                app:navigationIcon="?attr/homeAsUpIndicator"/>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_postbox_more_info" />
+    <include layout="@layout/content_postbox_info" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

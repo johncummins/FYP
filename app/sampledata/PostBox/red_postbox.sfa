@@ -69,7 +69,7 @@
       file: "sampledata/PostBox/red_postbox.obj",
       name: "red_postbox",
       recenter: "root",
-      scale: 0.0096016000000000001,
+      scale: 0.0026016000000000001,
    },
    samplers: [
       {

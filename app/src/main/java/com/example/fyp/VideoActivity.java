@@ -1,6 +1,7 @@
 package com.example.fyp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -25,5 +26,8 @@ public class VideoActivity extends AppCompatActivity {
         videoView.setMediaController(mediaController);
         //knows where it has to be poitioned on screen
         mediaController.setAnchorView(videoView);
+
+        Toolbar myToolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(myToolbar);
     }
 }

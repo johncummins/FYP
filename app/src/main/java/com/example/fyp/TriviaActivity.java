@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;
@@ -23,6 +24,10 @@ import com.google.firebase.database.ValueEventListener;
 
 
 import java.text.DecimalFormat;
+
+import static android.graphics.Color.GREEN;
+import static android.graphics.Color.RED;
+import static android.graphics.Color.WHITE;
 
 public class TriviaActivity extends AppCompatActivity {
 
@@ -52,8 +57,7 @@ public class TriviaActivity extends AppCompatActivity {
         score = findViewById(R.id.score);
         Toolbar myToolbar = findViewById(R.id.toolbarTrivia);
         setSupportActionBar(myToolbar);
-        //getSupportActionBar().setTitle("Test your Knowledge");
-
+        getSupportActionBar().setTitle("Easter Rising Quiz");
 
         //initial call on the update question function, initialises the the questions and answers
         updateQuestion();
@@ -64,6 +68,7 @@ public class TriviaActivity extends AppCompatActivity {
         bt1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
                 if(bt1.getText().equals(answer)){
+                    bt1.setBackgroundColor(GREEN);
                     Toast.makeText(TriviaActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
                     correct++;
                     updateQuestion();
@@ -71,6 +76,7 @@ public class TriviaActivity extends AppCompatActivity {
                     updateScore();
                 }
                 else{
+                    bt1.setBackgroundColor(RED);
                     Toast.makeText(TriviaActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
                     updateQuestion();
                     updateQuestionNum();
@@ -84,6 +90,7 @@ public class TriviaActivity extends AppCompatActivity {
         bt2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
                 if(bt2.getText().equals(answer)){
+                    bt2.setBackgroundColor(GREEN);
                     Toast.makeText(TriviaActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
                     correct++;
                     updateQuestion();
@@ -91,6 +98,7 @@ public class TriviaActivity extends AppCompatActivity {
                     updateScore();
                 }
                 else{
+                    bt2.setBackgroundColor(RED);
                     Toast.makeText(TriviaActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
                     updateQuestion();
                     updateQuestionNum();
@@ -104,6 +112,7 @@ public class TriviaActivity extends AppCompatActivity {
         bt3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
                 if(bt3.getText().equals(answer)){
+                    bt3.setBackgroundColor(GREEN);
                     Toast.makeText(TriviaActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
                     correct++;
                     updateQuestion();
@@ -112,6 +121,7 @@ public class TriviaActivity extends AppCompatActivity {
 
                 }
                 else{
+                    bt3.setBackgroundColor(RED);
                     Toast.makeText(TriviaActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
                     updateQuestion();
                     updateQuestionNum();
@@ -125,6 +135,7 @@ public class TriviaActivity extends AppCompatActivity {
         bt4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
                 if(bt4.getText().equals(answer)){
+                    bt4.setBackgroundColor(GREEN);
                     Toast.makeText(TriviaActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
                     correct++;
                     updateQuestion();
@@ -132,6 +143,7 @@ public class TriviaActivity extends AppCompatActivity {
                     updateScore();
                 }
                 else{
+                    bt4.setBackgroundColor(RED);
                     Toast.makeText(TriviaActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
                     updateQuestion();
                     updateQuestionNum();
@@ -157,6 +169,7 @@ public class TriviaActivity extends AppCompatActivity {
 
     public void updateQuestionNum(){
         questionNum.setText("Question "+ qNum);
+
     }
 
     public void updateScore(){
@@ -292,6 +305,5 @@ public class TriviaActivity extends AppCompatActivity {
                     });
         }
         updateQuestionNum();
-
     }
 }

@@ -73,26 +73,28 @@
             android:layout_height="145dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="190dp"
+            android:layout_marginTop="170dp"
             android:layout_marginRight="15dp"
             android:gravity="center"
             android:textAlignment="center"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="24sp"></TextView>
+            android:textColor="@color/colorBlack"
+            android:textSize="24sp">
+
+        </TextView>
 
         <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/radio_group"
-            android:layout_marginTop="30dp"
             android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp">
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp">
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button1"
-                android:textColor="@color/blue2"
+                android:textColor="@color/colorBlack"
                 android:textSize="16dp"
                 android:layout_gravity="center">
             </Button>
@@ -101,8 +103,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button2"
-                android:layout_marginTop="6dp"
-                android:textColor="@color/blue2"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/colorBlack"
                 android:textSize="16dp"
                 android:layout_gravity="center">
             </Button>
@@ -111,9 +113,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button3"
-                android:textColor="@color/blue2"
+                android:textColor="@color/colorBlack"
                 android:textSize="16dp"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="10dp"
                 android:layout_gravity="center">
             </Button>
 
@@ -121,9 +123,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button4"
-                android:textColor="@color/blue2"
+                android:textColor="@color/colorBlack"
                 android:textSize="16dp"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="10dp"
                 android:layout_gravity="center">
             </Button>
         </RadioGroup>

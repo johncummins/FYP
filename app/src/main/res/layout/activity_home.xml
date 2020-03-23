@@ -16,6 +16,9 @@
         app:tabIndicatorColor="#4279a3"
         app:tabTextColor="@android:color/background_light" />
 
+    <!--In the above viewPager, there might be an issue with the height (560dp) only guessed this height, changed acuse of buttons at bottom-->
+
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager_home"
         android:layout_width="match_parent"
@@ -23,8 +26,6 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     </androidx.viewpager.widget.ViewPager>
-    <!--In the above viewPager, there might be an issue with the height (560dp) only guessed this height, changed acuse of buttons at bottom-->
-
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -43,10 +44,11 @@
             android:background="@color/colorPrimaryDark"
             android:drawableStart="@android:drawable/ic_dialog_map"
             android:onClick="showMaps"
-            android:text="Maps"
+            android:text="Floor\nPlan"
             android:textAlignment="center"
             android:textColor="@android:color/background_light"
-            android:layout_alignStart="@id/AR"
+            android:layout_toStartOf="@id/AR"
+            android:paddingStart="15dp"
             />
 
         <Button
@@ -55,14 +57,16 @@
             android:layout_height="80dp"
             android:layout_centerHorizontal="true"
             android:background="@drawable/rounded_corners"
-            android:drawableTop="@drawable/ic_remove_red_eye_black_24dp"
-            android:onClick="arCamera"
-            android:text="AR"
-            android:textAlignment="center"
-            android:textSize="18dp"
             android:clickable="true"
+            android:drawableTop="@drawable/ic_remove_red_eye_black_24dp"
             android:focusable="true"
-            android:translationZ="10dp" />
+            android:gravity="center_horizontal|bottom"
+            android:onClick="arCamera"
+            android:padding="15dp"
+            android:text="AR"
+            android:textAlignment="gravity"
+            android:textColor="@color/colorBlack"
+            android:textSize="18dp" />
 
         <Button
             android:id="@+id/Trivia"
@@ -76,7 +80,8 @@
             android:onClick="showTrivia"
             android:textAlignment="center"
             android:textColor="@android:color/background_light"
-            android:layout_alignEnd="@id/AR"/>
+            android:layout_toEndOf="@id/AR"
+            android:paddingEnd="15dp"/>
 
     </RelativeLayout>
 

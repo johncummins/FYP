@@ -32,14 +32,17 @@
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/blue2"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:navigationContentDescription="Back"
+                app:navigationIcon="?attr/homeAsUpIndicator"
+                />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <include
         android:id="@+id/include"
-        layout="@layout/content_more_info_bowl"
+        layout="@layout/content_bowl_info"
         app:layout_anchor="@+id/include"
         app:layout_anchorGravity="top|center" />
 

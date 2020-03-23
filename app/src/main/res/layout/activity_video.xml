@@ -6,14 +6,27 @@
     android:layout_height="match_parent"
     android:layout_alignParentTop="true">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarVideo"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/blue2"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:navigationContentDescription="Back"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        />
+
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbarVideo"
+        android:layout_marginTop="30dp">
     <VideoView
         android:id="@+id/videoView1"
         android:layout_width="wrap_content"
-        android:layout_height="200dp" />
+        android:layout_height="200dp"
+        />
 
     </FrameLayout>
 </RelativeLayout>

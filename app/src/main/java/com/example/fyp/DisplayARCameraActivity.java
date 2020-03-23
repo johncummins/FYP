@@ -85,8 +85,7 @@ public class DisplayARCameraActivity extends AppCompatActivity {
 
     //This function sets up an augmented image database
     //This function is called in custom ARfragment class
-    public void setupAugmentedImgDb(Config config, Session session){
-
+    public void AugmentedImgDb(Config config, Session session){
         InputStream inS = getResources().openRawResource(R.raw.imagedb);
         try {
             AugmentedImageDatabase augmentedImgDB = AugmentedImageDatabase.deserialize(session, inS);
@@ -113,13 +112,25 @@ public class DisplayARCameraActivity extends AppCompatActivity {
         //BOWL
                 if (augmentedImage.getName().equals("bowl") && addBowlModel == true){ //if img being tracked has name bowl and bool "addBowlmodel" is true
                     // Vibrate for 400 milliseconds
-                    v.vibrate(400);
+                    v.vibrate(300);
+
                     //hide the playButton
                     playButton.hide();
+
+                    /*
                     middle_textA.setVisibility(View.VISIBLE);
                     ButtonB.setVisibility(View.VISIBLE);
+
                     middle_textA.setText("This is the North Devon Chafing Fish!");
                     ButtonB.setText("Click here to view 3D model");
+
+                     */
+
+                    middle_textA.setText("This is the North Devon Chafing Fish");
+                    ButtonB.setText("Click the play button to hear the proclamation read by relatives of the Easter rising");
+                    middle_textA.setVisibility(View.VISIBLE);
+                    ButtonB.setVisibility(View.VISIBLE);
+
 
                     middle_textA.postDelayed(new Runnable() {
                         public void run() {
@@ -136,13 +147,13 @@ public class DisplayARCameraActivity extends AppCompatActivity {
                             ButtonB.setVisibility(View.GONE);
                             createModel(arFragment, augmentedImage.createAnchor //then place 3D model ontop of image
                                             (augmentedImage.getCenterPose()), //creates anchor in centre of detected image
-                                    Uri.parse("model_899146844314.sfb"), 270); // model of bowl.sfb)
+                                    Uri.parse("model_899146844314.sfb"), 270, 0); // model of bowl.sfb)
                             info_text_pop.setVisibility(View.VISIBLE);
                             info_text_pop.postDelayed(new Runnable() {
                                 public void run() {
                                     info_text_pop.setVisibility(View.GONE);
                                 }
-                            }, 10000);
+                            }, 5000);
                             infoButtonFloatingB.show();
                         }
                     });
@@ -161,8 +172,10 @@ public class DisplayARCameraActivity extends AppCompatActivity {
                     // Vibrate for 400 milliseconds
                     v.vibrate(400);
 
-                    middle_textA.setText("This is a copy of Proclamation of the Irish Republic");
+                    middle_textA.setText("This is a copy of 1916 Proclamation");
                     middle_textB.setText("Click the play button to hear the proclamation read by relatives of the Easter rising");
+                    middle_textA.setVisibility(View.VISIBLE);
+                    middle_textB.setVisibility(View.VISIBLE);
 
                     middle_textA.postDelayed(new Runnable() {
                         public void run() {
@@ -172,7 +185,12 @@ public class DisplayARCameraActivity extends AppCompatActivity {
 
                     infoButtonFloatingB.hide();
                     playButton.show();
-                    Log.i("Here", "Proclamtion has been detected, and sets addmodel to true");
+                    playButton.postDelayed(new Runnable() {
+                        public void run() {
+                            middle_textB.setVisibility(View.GONE);
+                        }
+                    }, 10000);
+                    Log.i("Here", "Proclamation has been detected, and sets addmodel to true");
                     addProcAdudio = false;
                 }
 
@@ -181,11 +199,12 @@ public class DisplayARCameraActivity extends AppCompatActivity {
                     // Vibrate for 400 milliseconds
                     v.vibrate(400);
                     //showPostBoxInfoBt = true;//if statment for the info button, brings user to BowlInfoActivity.class
+                    ButtonB.setVisibility(View.INVISIBLE);
                     playButton.hide();
+                    ButtonB.setText("Click here to see how this postbox looked before Ireland got its independence");
                     middle_textA.setVisibility(View.VISIBLE);
                     ButtonB.setVisibility(View.VISIBLE);
                     middle_textA.setText("This is the Penfold Postbox");
-                    ButtonB.setText("Click here to see how this postbox looked before Ireland got its independence");
                     ButtonB.setTextSize(14);
 
                     middle_textA.postDelayed(new Runnable() {
@@ -200,13 +219,16 @@ public class DisplayARCameraActivity extends AppCompatActivity {
                             ButtonB.setVisibility(View.GONE);
                             createModel(arFragment, augmentedImage.createAnchor //then place 3D model ontop of image
                                             (augmentedImage.getCenterPose()), //creates anchor in centre of detected image
-                                    Uri.parse("red_postbox.sfb"), 0); // model of red_postbox.sfb)
-                            ButtonB.postDelayed(new Runnable() {
+                                    Uri.parse("red_postbox.sfb"), 0,90); // model of red_postbox.sfb)
+
+                            info_text_pop.setVisibility(View.VISIBLE);
+                            info_text_pop.postDelayed(new Runnable() {
                                 public void run() {
-                                    info_text_pop.setVisibility(View.VISIBLE);
+                                    info_text_pop.setVisibility(View.GONE);
                                 }
-                            }, 7000);
+                            }, 5000);
                             infoButtonFloatingB.show();
+
                         }
                     });
                     //on click listener set floating info button to the moreInfoPP method from down below
@@ -221,7 +243,8 @@ public class DisplayARCameraActivity extends AppCompatActivity {
       //EAMON DEV
                 if (augmentedImage.getName().equals("eamon") && addEamon == true) { //if img being tracked has name proclamation and bool "addprocaudio" is true
                     // Vibrate for 400 milliseconds
-                    v.vibrate(400);
+                    v.vibrate(300);
+                    v.vibrate(300);
 
                     OnScreenButtonsVisible();
                     middle_textA.setText("This is a statue of Éamon de Valera!");
@@ -250,7 +273,6 @@ public class DisplayARCameraActivity extends AppCompatActivity {
     }
 
     public void playAudio(View view){
-        middle_textB.setVisibility(View.GONE);
         Log.i("Here: play button pressed", "audio will play now");
         mediaPlayer.start();
         pauseButton.show();
@@ -265,11 +287,11 @@ public class DisplayARCameraActivity extends AppCompatActivity {
     }
 
 
-    private void createModel(ArFragment fragment, Anchor anchor, Uri model, int x){ //builds the model
+    private void createModel(ArFragment fragment, Anchor anchor, Uri model, int x, int z){ //builds the model
         ModelRenderable.builder()
                 .setSource(fragment.getContext(), model)
                 .build()
-                .thenAccept(renderable -> addNodeToScene(fragment, anchor, renderable, x))
+                .thenAccept(renderable -> addNodeToScene(fragment, anchor, renderable, x, z))
                 .exceptionally((throwable -> { AlertDialog.Builder builder = new AlertDialog.Builder(this);
                     builder.setMessage(throwable.getMessage()).setTitle("An Error has occurred - see below for details");
                     AlertDialog dialog = builder.create();
@@ -279,15 +301,26 @@ public class DisplayARCameraActivity extends AppCompatActivity {
 
     }
 
-    private void addNodeToScene(ArFragment fragment, Anchor anchor, Renderable renderable, int x){
+    private void addNodeToScene(ArFragment fragment, Anchor anchor, Renderable renderable, int x, int z){
         //change the int to string, then add the f to the string then make it float, in order to rotate bowl on y axis
         String intX = Integer.toString(x);
-        String yValue = intX + "f";
-        Float yVal =  Float.parseFloat(yValue);
+        String xValue = intX + "f";
+        Float xVal =  Float.parseFloat(xValue);
+
+        String intZ = Integer.toString(z);
+        String zValue = intZ + "f";
+        Float zVal =  Float.parseFloat(zValue);
 
         AnchorNode anchorNode = new AnchorNode(anchor); //creates a basic node, in fixed position, cant be moved or interacted with
         TransformableNode node = new TransformableNode(fragment.getTransformationSystem()); //can scale, rotate and move this node
-        node.setLocalRotation(Quaternion.axisAngle(new Vector3(1f, 0, 0), yVal)); //rotates the node 270 degrees in y axis (x,y,z), as bowl useed to be upside down - changed to 0f for when on table
+        //for the bowl
+        if (x>0){
+            node.setLocalRotation(Quaternion.axisAngle(new Vector3(1f, 0, 0), xVal)); //rotates the node 270 degrees in x axis (x,y,z), as bowl useed to be upside down - changed to 0f for when on table
+        }
+        //for the postbox
+        if (z>0){
+            node.setLocalRotation(Quaternion.axisAngle(new Vector3(-1f, 1f, 1f), zVal)); //rotates the node 90 degrees in z and y axis (x,y,z), as postbox useed to be pointing out
+        }
         node.setRenderable(renderable);
 
         node.setParent(anchorNode); //setting parent of transformable node as anchor

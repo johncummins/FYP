@@ -39,6 +39,7 @@ public class HomeActivity extends AppCompatActivity {
         TabLayout tabs = findViewById(R.id.tabs_home);
         tabs.setupWithViewPager(viewPager_home);
         findViewById(R.id.tabs_home).bringToFront();
+        findViewById(R.id.AR).bringToFront();
     }
 
     public void showTrivia (View view){
